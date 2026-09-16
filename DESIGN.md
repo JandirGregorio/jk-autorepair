@@ -79,6 +79,9 @@ components:
     backgroundColor: "{colors.tertiary}"
     textColor: "{colors.neutral}"
     typography: "{typography.display-lg}"
+  sign-shadow:
+    backgroundColor: "{colors.brush}"
+    textColor: "{colors.neutral}"
 ---
 
 # El Rotulo
