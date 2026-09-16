@@ -24,7 +24,7 @@ export function ServiceBoards() {
         <PaintedPanel
           key={group.id}
           tone={index % 2 === 0 ? 'enamel' : 'deep'}
-          className={`p-6 ${spans[index]}`}
+          className={`p-6 ${spans[index % spans.length]}`}
         >
           <h3 className="text-2xl">{t(`services.${group.id}.label`)}</h3>
           <ul className="mt-4 space-y-2">

@@ -4,6 +4,7 @@ import { Link, Outlet } from 'react-router'
 import { business, cityLine, streetLine } from '../content/business'
 import { formatRange, saturdayRange, weekdayRange } from '../content/hours'
 import { useRouteInfo } from '../hooks/useRoute'
+import { hrefFor } from '../hrefs'
 import { alternatePath, pathFor } from '../routes'
 import { CallButton, SpanishLine } from './sign'
 
@@ -55,7 +56,7 @@ function Header() {
 
         <div className="ms-auto flex items-center gap-4">
           <a
-            href={alternatePath(path)}
+            href={hrefFor(alternatePath(path))}
             lang={other}
             hrefLang={other}
             className="rounded-painted border-2 border-sign-yellow px-3 py-1 font-display text-sm text-sign-yellow no-underline"

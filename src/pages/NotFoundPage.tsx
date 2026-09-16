@@ -2,6 +2,7 @@ import { useTranslation } from 'react-i18next'
 
 import { AddressPlate, CallButton, PaintedArrow } from '../components/sign'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
+import { hrefFor } from '../hrefs'
 import { pathFor } from '../routes'
 
 export default function NotFoundPage() {
@@ -26,7 +27,7 @@ export default function NotFoundPage() {
         <CallButton size="loud" />
         {/* A real link, not a router link: 404.html can be served at any path. */}
         <a
-          href={pathFor('home', language)}
+          href={hrefFor(pathFor('home', language))}
           className="group inline-flex items-center gap-2 font-display text-sign-yellow"
         >
           {t('notFound.home')}
@@ -35,7 +36,7 @@ export default function NotFoundPage() {
       </div>
 
       <a
-        href={pathFor('home', other)}
+        href={hrefFor(pathFor('home', other))}
         lang={other}
         hrefLang={other}
         className="mt-4 inline-block font-display text-sm text-sign-yellow"

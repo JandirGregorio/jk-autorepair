@@ -21,7 +21,14 @@ const siteUrl = (
   process.env.VITE_SITE_URL ?? 'https://jandirgregorio.github.io/jk-autorepair'
 ).replace(/\/$/, '')
 
+const base = process.env.VITE_BASE ?? '/jk-autorepair/'
+
 const failures: string[] = []
+
+/** Root-relative hrefs, which are the ones that need the base path. */
+function internalHrefs(html: string): string[] {
+  return [...html.matchAll(/href="(\/[^"]*)"/g)].map((match) => match[1])
+}
 
 function check(condition: boolean, message: string) {
   if (!condition) failures.push(message)
@@ -72,6 +79,12 @@ async function main() {
       check(!html.toLowerCase().includes(word.toLowerCase()), `${where}: mentions "${word}"`)
     }
 
+    // Every internal link must carry the deployment base path. A plain <a>
+    // does not get it from the router, and a link without it leaves the site.
+    for (const href of internalHrefs(html)) {
+      check(href.startsWith(base), `${where}: internal link "${href}" is missing the base path`)
+    }
+
     // The page must say something without JavaScript, not just ship a shell.
     const bodyText = html
       .replace(/<script[\s\S]*?<\/script>/g, '')
@@ -85,6 +98,9 @@ async function main() {
   if (notFound) {
     check(/<html lang="es"/.test(notFound), '404.html: should be Spanish')
     check(notFound.includes(business.phone.href), '404.html: no click-to-call link')
+    for (const href of internalHrefs(notFound)) {
+      check(href.startsWith(base), `404.html: internal link "${href}" is missing the base path`)
+    }
   }
 
   const sitemap = await read('sitemap.xml')
