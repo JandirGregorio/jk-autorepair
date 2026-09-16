@@ -5,11 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b && vite build && npm run build:ssr && npm run prerender",
+    "build:ssr": "vite build --ssr src/entry-server.tsx --outDir dist-ssr",
+    "prerender": "tsx scripts/prerender.ts",
+    "check-dist": "tsx scripts/check-dist.ts",
+    "design:lint": "design.md lint DESIGN.md",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "test": "vitest run",
+    "preview": "vite preview",
+    "graph": "echo \"run /understand in Claude Code to rebuild .understand-anything/\""
   },
   "dependencies": {
+    "@fontsource/archivo": "^5.3.0",
+    "@fontsource/bungee": "^5.3.0",
+    "@fontsource/yellowtail": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
     "i18next": "^26.4.2",
     "react": "^19.2.8",

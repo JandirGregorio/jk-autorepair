@@ -1,0 +1,38 @@
+/**
+ * El Rótulo: enamel paint on metal.
+ *
+ * The tokens here are the whole palette and type system. DESIGN.md documents
+ * them in prose at the end of the build; this file is what the components read.
+ *
+ * Contrast, measured against the ground each color actually sits on:
+ *   enamel white on sign blue      12.3:1
+ *   sign yellow on sign blue        7.4:1
+ *   enamel white on painted red     5.1:1
+ *   ink on enamel white            16.8:1
+ */
+
+@theme {
+  /* Grounds */
+  --color-sign-blue: #0d3b8c;
+  --color-sign-blue-deep: #072454;
+  --color-enamel: #f7f3e8;
+  --color-ink: #0b0d12;
+
+  /* The two painted accents. Nothing else gets to be an accent. */
+  --color-sign-yellow: #f6b711;
+  --color-painted-red: #bf2010;
+
+  /* Brushed edge tint, for painted rules and hand-cut borders. */
+  --color-brush: #041a3d;
+
+  --font-display: 'Bungee', 'Arial Black', system-ui, sans-serif;
+  --font-script: 'Yellowtail', 'Brush Script MT', cursive;
+  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* A painted sign has no soft corners and no soft shadows. */
+  --radius-painted: 2px;
+
+  /* Hard offset shadow: paint sits on top of paint. */
+  --shadow-painted: 6px 6px 0 var(--color-brush);
+  --shadow-painted-sm: 3px 3px 0 var(--color-brush);
+}
