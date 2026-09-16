@@ -84,5 +84,48 @@
     "sameDay": "Trabajos comunes el mismo día",
     "freeEstimates": "Presupuestos gratis",
     "experience": "{{years}}+ años de experiencia"
+  },
+  "seo": {
+    "home": {
+      "title": "Taller Mecánico en Hamilton Township, NJ | JK Auto Repair",
+      "description": "Taller mecánico en Hamilton Township, NJ. Frenos, cambio de aceite, diagnóstico y aire acondicionado. Más de 20 años de experiencia. Se habla español. Llame al (609) 858-1486."
+    },
+    "services": {
+      "title": "Servicios | JK Auto Repair en Hamilton Township, NJ",
+      "description": "Mantenimiento, frenos y suspensión, diagnóstico y motor, eléctrico y aire acondicionado. Todas las marcas y modelos. Presupuestos gratis en Hamilton Township, NJ."
+    }
+  },
+  "hero": {
+    "trade": "Taller mecánico",
+    "lede": "El mecánico que revisa su carro es el que lo repara. Más de 20 años en el oficio, aquí en la East State Street.",
+    "hoursToday": "Hoy: {{hours}}"
+  },
+  "about": {
+    "title": "Quiénes somos",
+    "body": "JK Auto Repair es un taller de barrio en Hamilton Township. El dueño empezó a trabajar en carros desde joven y ya lleva más de 20 años en el oficio. Le explicamos qué tiene su carro en palabras claras, en español o en inglés, antes de tocar nada. Puede venir sin cita y el presupuesto no le cuesta."
+  },
+  "mission": {
+    "title": "Nuestro compromiso",
+    "body": "Queremos que salga del taller sabiendo qué le hicimos a su carro y por qué. Trabajo honesto, precios claros y trato de vecino."
+  },
+  "reviews": {
+    "title": "Reseñas",
+    "body": "Las reseñas del taller están en Google. Léalas ahí y, si ya trajo su carro, deje la suya."
+  },
+  "photos": {
+    "title": "El taller",
+    "pending": "Fotos del taller: próximamente"
+  },
+  "servicesPage": {
+    "intro": "Esto es lo que hacemos. Si no ve su problema en la lista, llame y pregunte."
+  },
+  "notFound": {
+    "title": "Esta página no existe",
+    "body": "Revise la dirección o vuelva al inicio. Si necesita el taller ahora, llame.",
+    "home": "Ir al inicio",
+    "english": "Ver el sitio en inglés"
+  },
+  "footer": {
+    "tagline": "Taller mecánico en Hamilton Township, NJ"
   }
 }

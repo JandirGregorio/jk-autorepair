@@ -84,5 +84,48 @@
     "sameDay": "Same-day service on common jobs",
     "freeEstimates": "Free estimates",
     "experience": "{{years}}+ years of experience"
+  },
+  "seo": {
+    "home": {
+      "title": "Auto Repair Shop in Hamilton Township, NJ | JK Auto Repair",
+      "description": "Auto repair in Hamilton Township, NJ. Brakes, oil changes, diagnostics, air conditioning. 20+ years of experience. Se habla español. Call (609) 858-1486."
+    },
+    "services": {
+      "title": "Services | JK Auto Repair in Hamilton Township, NJ",
+      "description": "Maintenance, brakes and suspension, diagnostics and engine work, electrical and A/C. All makes and models. Free estimates in Hamilton Township, NJ."
+    }
+  },
+  "hero": {
+    "trade": "Auto repair",
+    "lede": "The mechanic who checks your car is the one who fixes it. Over 20 years on the job, right here on East State Street.",
+    "hoursToday": "Today: {{hours}}"
+  },
+  "about": {
+    "title": "About the shop",
+    "body": "JK Auto Repair is a neighborhood shop in Hamilton Township. The owner started working on cars as a kid and has spent more than 20 years at it. He tells you what your car needs in plain words, in Spanish or English, before he touches anything. Walk in whenever you like, and the estimate costs nothing."
+  },
+  "mission": {
+    "title": "What we promise",
+    "body": "You should leave knowing what we did to your car and why. Honest work, clear prices, and the treatment you give a neighbor."
+  },
+  "reviews": {
+    "title": "Reviews",
+    "body": "The shop's reviews live on Google. Read them there, and leave one if you have brought your car in."
+  },
+  "photos": {
+    "title": "The shop",
+    "pending": "Shop photos coming soon"
+  },
+  "servicesPage": {
+    "intro": "Here is what we do. If your problem is not on the list, call and ask."
+  },
+  "notFound": {
+    "title": "This page does not exist",
+    "body": "Check the address or head back to the start. If you need the shop now, call.",
+    "home": "Go to the home page",
+    "english": "Ver el sitio en español"
+  },
+  "footer": {
+    "tagline": "Auto repair in Hamilton Township, NJ"
   }
 }
