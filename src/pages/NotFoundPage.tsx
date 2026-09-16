@@ -1,13 +1,17 @@
 import { useTranslation } from 'react-i18next'
 
 import { AddressPlate, CallButton, PaintedArrow } from '../components/sign'
-import { useRouteInfo } from '../hooks/useRoute'
+import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 import { pathFor } from '../routes'
 
 export default function NotFoundPage() {
   const { t } = useTranslation()
   const { language } = useRouteInfo()
   const other = language === 'es' ? 'en' : 'es'
+
+  // GitHub Pages serves one 404.html for every missing path, and it is in
+  // Spanish. When that path was an English one, correct the title after load.
+  useDocumentHead(t('notFound.title'), language)
 
   return (
     <div className="mx-auto max-w-3xl px-4 pt-12 sm:px-6">
