@@ -58,12 +58,15 @@ export function CallButton({ size = 'normal' }: { size?: 'normal' | 'loud' }) {
   return (
     <a
       href={business.phone.href}
-      className={`group inline-flex items-center gap-3 rounded-painted border-4 border-ink bg-painted-red text-enamel shadow-painted transition-transform duration-150 ease-out hover:-translate-y-0.5 ${
-        loud ? 'px-6 py-4 text-3xl sm:text-4xl' : 'px-4 py-3 text-lg'
+      className={`group inline-flex flex-col items-start gap-0.5 rounded-painted border-4 border-ink bg-painted-red text-enamel shadow-painted transition-transform duration-150 ease-out hover:-translate-y-0.5 sm:flex-row sm:items-center sm:gap-3 ${
+        loud ? 'px-5 py-3 text-2xl sm:px-6 sm:py-4 sm:text-4xl' : 'px-4 py-3 text-base sm:text-lg'
       }`}
     >
-      <span className="font-display">{t('actions.call')}</span>
-      <span className="numerals font-display">{business.phone.display}</span>
+      <span className="font-display text-[0.6em] tracking-widest sm:text-[1em] sm:tracking-normal">
+        {t('actions.call')}
+      </span>
+      {/* The number never breaks across lines: it is the whole point of the button. */}
+      <span className="numerals whitespace-nowrap font-display">{business.phone.display}</span>
     </a>
   )
 }

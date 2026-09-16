@@ -25,9 +25,11 @@ export default function HomePage() {
       {/* The sign itself: name, trade, where, and the number, in that order. */}
       <section className="grid gap-8 sm:grid-cols-5 sm:items-start">
         <div className="sm:col-span-3">
-          <h1 className="text-5xl leading-[0.95] sm:text-7xl">
-            <span className="block text-enamel [text-shadow:6px_6px_0_var(--color-brush)]">JK</span>
-            <span className="block text-sign-yellow [text-shadow:6px_6px_0_var(--color-brush)]">
+          <h1 className="text-4xl leading-[0.95] sm:text-7xl">
+            <span className="block text-enamel [text-shadow:4px_4px_0_var(--color-brush)] sm:[text-shadow:6px_6px_0_var(--color-brush)]">
+              JK
+            </span>
+            <span className="block text-sign-yellow [text-shadow:4px_4px_0_var(--color-brush)] sm:[text-shadow:6px_6px_0_var(--color-brush)]">
               Auto Repair
             </span>
             <span className="mt-3 block font-display text-xl uppercase tracking-wide text-enamel sm:text-3xl">
