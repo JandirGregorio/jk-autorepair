@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "skipToContent": "Ir al contenido"
+  },
+  "actions": {
+    "call": "Llamar",
+    "callWithNumber": "Llamar al {{phone}}",
+    "directions": "Cómo llegar",
+    "readReviews": "Ver reseñas en Google",
+    "leaveReview": "Dejar una reseña",
+    "switchToEnglish": "English",
+    "switchToSpanish": "Español"
+  },
+  "hours": {
+    "title": "Horario",
+    "weekdays": "Lunes a viernes",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+    "closed": "Cerrado",
+    "openNow": "Abierto ahora",
+    "closedNow": "Cerrado ahora"
+  },
+  "contact": {
+    "title": "Dónde estamos",
+    "addressLabel": "Dirección",
+    "phoneLabel": "Teléfono",
+    "mapTitle": "Mapa de JK Auto Repair en {{address}}",
+    "spanishSpoken": "Se habla español"
+  },
+  "services": {
+    "title": "Servicios",
+    "maintenance": {
+      "label": "Mantenimiento",
+      "items": {
+        "oil": "Cambio de aceite",
+        "filters": "Filtros",
+        "fluids": "Fluidos",
+        "tuneUp": "Afinación",
+        "tires": "Rotación de llantas",
+        "inspection": "Inspección"
+      }
+    },
+    "brakes": {
+      "label": "Frenos y suspensión",
+      "items": {
+        "pads": "Pastillas de freno",
+        "rotors": "Discos de freno",
+        "shocks": "Amortiguadores",
+        "steering": "Dirección",
+        "alignment": "Alineación"
+      }
+    },
+    "diagnostics": {
+      "label": "Diagnóstico y motor",
+      "items": {
+        "checkEngine": "Luz de check engine",
+        "scan": "Escaneo computarizado",
+        "engineRepair": "Reparación de motor",
+        "cooling": "Sistema de enfriamiento"
+      }
+    },
+    "electrical": {
+      "label": "Eléctrico y aire acondicionado",
+      "items": {
+        "battery": "Baterías",
+        "starter": "Marchas de arranque",
+        "alternator": "Alternadores",
+        "ac": "Aire acondicionado",
+        "heating": "Calefacción"
+      }
+    }
+  },
+  "makes": {
+    "title": "Marcas",
+    "allMakes": "Trabajamos todas las marcas y modelos"
+  },
+  "areas": {
+    "title": "Zonas que atendemos"
+  },
+  "policies": {
+    "walkIns": "Puede venir sin cita",
+    "sameDay": "Trabajos comunes el mismo día",
+    "freeEstimates": "Presupuestos gratis",
+    "experience": "{{years}}+ años de experiencia"
+  }
+}

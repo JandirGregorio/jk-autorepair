@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "skipToContent": "Skip to content"
+  },
+  "actions": {
+    "call": "Call",
+    "callWithNumber": "Call {{phone}}",
+    "directions": "Get directions",
+    "readReviews": "Read Google reviews",
+    "leaveReview": "Leave a review",
+    "switchToEnglish": "English",
+    "switchToSpanish": "Español"
+  },
+  "hours": {
+    "title": "Hours",
+    "weekdays": "Monday to Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+    "closed": "Closed",
+    "openNow": "Open now",
+    "closedNow": "Closed now"
+  },
+  "contact": {
+    "title": "Where to find us",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "mapTitle": "Map of JK Auto Repair at {{address}}",
+    "spanishSpoken": "Se habla español"
+  },
+  "services": {
+    "title": "Services",
+    "maintenance": {
+      "label": "Maintenance",
+      "items": {
+        "oil": "Oil changes",
+        "filters": "Filters",
+        "fluids": "Fluids",
+        "tuneUp": "Tune-ups",
+        "tires": "Tire rotation",
+        "inspection": "Inspections"
+      }
+    },
+    "brakes": {
+      "label": "Brakes and suspension",
+      "items": {
+        "pads": "Brake pads",
+        "rotors": "Rotors",
+        "shocks": "Shocks and struts",
+        "steering": "Steering",
+        "alignment": "Alignment"
+      }
+    },
+    "diagnostics": {
+      "label": "Diagnostics and engine",
+      "items": {
+        "checkEngine": "Check engine light",
+        "scan": "Computer scan",
+        "engineRepair": "Engine repair",
+        "cooling": "Cooling system"
+      }
+    },
+    "electrical": {
+      "label": "Electrical and A/C",
+      "items": {
+        "battery": "Batteries",
+        "starter": "Starters",
+        "alternator": "Alternators",
+        "ac": "Air conditioning",
+        "heating": "Heating"
+      }
+    }
+  },
+  "makes": {
+    "title": "Makes",
+    "allMakes": "We work on all makes and models"
+  },
+  "areas": {
+    "title": "Areas we serve"
+  },
+  "policies": {
+    "walkIns": "Walk-ins welcome",
+    "sameDay": "Same-day service on common jobs",
+    "freeEstimates": "Free estimates",
+    "experience": "{{years}}+ years of experience"
+  }
+}
