@@ -39,3 +39,4 @@ dist-ssr
 
 # Workflows kept out of the repo by request
 .github/
+.claude/
