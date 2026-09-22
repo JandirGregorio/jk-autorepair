@@ -1,8 +1,9 @@
 /**
- * The page's painted boards.
+ * The page's sections.
  *
- * Deliberately not a row of identical cards: the boards vary in width and tone
- * the way panels on a real sign do, and the lists inside them carry the work.
+ * The arrangement is the one a customer expects from an auto shop site, which
+ * is what the client asked for. The materials are the service record's: ruled
+ * rows, tabular figures, one accent, no ornament.
  */
 
 import { useTranslation } from 'react-i18next'
@@ -10,37 +11,27 @@ import { useTranslation } from 'react-i18next'
 import { business, cityLine, fullAddress, streetLine } from '../content/business'
 import { formatRange, saturdayRange, weekdayRange } from '../content/hours'
 import { useRouteInfo } from '../hooks/useRoute'
-import { AddressPlate, CallButton, PaintedArrow, PaintedPanel } from './sign'
+import { AddressBlock, ArrowGlyph, CallButton, FieldLabel, RecordLeaf } from './sign'
 
 export function ServiceBoards() {
   const { t } = useTranslation()
 
-  // Widths alternate so the boards read as painted panels, not a card grid.
-  const spans = ['sm:col-span-3', 'sm:col-span-2', 'sm:col-span-2', 'sm:col-span-3']
-
   return (
-    <div className="grid gap-5 sm:grid-cols-5">
-      {business.services.map((group, index) => (
-        <PaintedPanel
-          key={group.id}
-          tone={index % 2 === 0 ? 'enamel' : 'deep'}
-          className={`p-6 ${spans[index % spans.length]}`}
-        >
-          <h3 className="text-2xl">{t(`services.${group.id}.label`)}</h3>
-          <ul className="mt-4 space-y-2">
+    <div className="grid gap-5 sm:grid-cols-2">
+      {business.services.map((group) => (
+        <RecordLeaf key={group.id} className="p-6">
+          <h3 className="font-display text-xl font-semibold">{t(`services.${group.id}.label`)}</h3>
+          <ul className="mt-4">
             {group.items.map((item) => (
-              <li key={item} className="flex items-baseline gap-3">
-                <span
-                  aria-hidden="true"
-                  className={`mt-2 inline-block h-2 w-2 shrink-0 ${
-                    index % 2 === 0 ? 'bg-painted-red' : 'bg-sign-yellow'
-                  }`}
-                />
+              <li
+                key={item}
+                className="border-b border-rule py-2 text-[0.95rem] last:border-b-0 last:pb-0"
+              >
                 {t(`services.${group.id}.items.${item}`)}
               </li>
             ))}
           </ul>
-        </PaintedPanel>
+        </RecordLeaf>
       ))}
     </div>
   )
@@ -49,17 +40,12 @@ export function ServiceBoards() {
 export function MakesBoard() {
   const { t } = useTranslation()
   return (
-    <section className="mt-12">
-      <h2 className="text-3xl">{t('makes.title')}</h2>
+    <section className="mt-16">
+      <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t('makes.title')}</h2>
       <p className="mt-2 text-lg">{t('makes.allMakes')}</p>
-      <ul className="mt-4 flex flex-wrap gap-2">
+      <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2 font-form text-sm text-slate">
         {business.makes.map((make) => (
-          <li
-            key={make}
-            className="rounded-painted border-2 border-sign-yellow px-3 py-1 font-display text-xs tracking-wider text-sign-yellow"
-          >
-            {make}
-          </li>
+          <li key={make}>{make}</li>
         ))}
       </ul>
     </section>
@@ -69,8 +55,8 @@ export function MakesBoard() {
 export function AreasServed() {
   const { t } = useTranslation()
   return (
-    <section className="mt-12">
-      <h2 className="text-3xl">{t('areas.title')}</h2>
+    <section className="mt-16">
+      <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t('areas.title')}</h2>
       <p className="mt-2 text-lg">{business.areasServed.join(' · ')}</p>
     </section>
   )
@@ -85,51 +71,53 @@ export function AreasServed() {
 export function ReviewsPanel() {
   const { t } = useTranslation()
   return (
-    <PaintedPanel tone="enamel" className="mt-12 p-6">
-      <h2 className="text-3xl">{t('reviews.title')}</h2>
+    <section className="mt-16">
+      <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t('reviews.title')}</h2>
       <p className="mt-2 max-w-prose text-lg">{t('reviews.body')}</p>
-      <div className="mt-5 flex flex-wrap gap-4">
+      <div className="mt-5 flex flex-wrap gap-6">
         <a
           href={business.links.readReviews}
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex items-center gap-2 rounded-painted border-4 border-ink bg-sign-yellow px-4 py-3 font-display text-ink no-underline shadow-painted-sm"
+          className="group inline-flex items-center gap-2 font-display text-sm font-semibold text-oxblood no-underline"
         >
           {t('actions.readReviews')}
-          <PaintedArrow />
+          <ArrowGlyph />
         </a>
         <a
           href={business.links.leaveReview}
           target="_blank"
           rel="noreferrer"
-          className="group inline-flex items-center gap-2 rounded-painted border-4 border-ink px-4 py-3 font-display text-ink no-underline"
+          className="group inline-flex items-center gap-2 font-display text-sm font-semibold text-graphite no-underline"
         >
           {t('actions.leaveReview')}
-          <PaintedArrow />
+          <ArrowGlyph />
         </a>
       </div>
-    </PaintedPanel>
+    </section>
   )
 }
 
 /**
- * Photo boards.
+ * Photo slots.
  *
- * The client has not sent shop photos. These are painted panels that say so,
- * rather than stock pictures of somebody else's garage.
+ * The client has not sent shop photos. These are labelled ruled frames that
+ * say so, sized at the real aspect ratio, so dropping images in later is a
+ * content change rather than a layout change. No texture or stock picture
+ * stands in for the missing photograph.
  */
-export function PhotoPanels() {
+export function PhotoSlots({ count = 3 }: { count?: number }) {
   const { t } = useTranslation()
   return (
-    <section className="mt-12">
-      <h2 className="text-3xl">{t('photos.title')}</h2>
+    <section className="mt-16">
+      <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t('photos.title')}</h2>
       <div className="mt-4 grid gap-4 sm:grid-cols-3">
-        {[0, 1, 2].map((index) => (
+        {Array.from({ length: count }, (_, index) => (
           <div
             key={index}
-            className="flex aspect-[4/3] items-center justify-center rounded-painted border-4 border-dashed border-sign-yellow/70 bg-sign-blue-deep p-4 text-center font-display text-sm text-sign-yellow"
+            className="flex aspect-[4/3] items-center justify-center rounded-leaf border border-dashed border-rule-strong bg-carbon p-4 text-center"
           >
-            {t('photos.pending')}
+            <FieldLabel>{t('photos.pending')}</FieldLabel>
           </div>
         ))}
       </div>
@@ -142,48 +130,51 @@ export function HoursLocation() {
   const { language } = useRouteInfo()
 
   return (
-    <section className="mt-12">
-      <h2 className="text-3xl">{t('contact.title')}</h2>
+    <section className="mt-16">
+      <h2 className="font-display text-2xl font-semibold sm:text-3xl">{t('contact.title')}</h2>
 
       <div className="mt-5 grid gap-5 sm:grid-cols-2">
-        <AddressPlate tone="enamel" />
+        <AddressBlock />
 
-        <PaintedPanel tone="deep" className="p-5">
-          <p className="font-display text-xs tracking-widest">{t('hours.title')}</p>
-          <table className="numerals mt-3 w-full text-left">
+        <RecordLeaf className="p-5">
+          <FieldLabel>{t('hours.title')}</FieldLabel>
+          <table className="mt-3 w-full text-left font-form text-sm tabular-nums">
             <tbody>
-              <tr>
-                <th scope="row" className="pe-4 font-normal">
+              <tr className="border-b border-rule">
+                <th scope="row" className="py-1.5 pe-4 font-normal">
                   {t('hours.weekdays')}
                 </th>
-                <td>{formatRange(weekdayRange(), language)}</td>
+                <td className="py-1.5 text-right">{formatRange(weekdayRange(), language)}</td>
               </tr>
-              <tr>
-                <th scope="row" className="pe-4 font-normal">
+              <tr className="border-b border-rule">
+                <th scope="row" className="py-1.5 pe-4 font-normal">
                   {t('hours.saturday')}
                 </th>
-                <td>{formatRange(saturdayRange(), language)}</td>
+                <td className="py-1.5 text-right">{formatRange(saturdayRange(), language)}</td>
               </tr>
               <tr>
-                <th scope="row" className="pe-4 font-normal">
+                <th scope="row" className="py-1.5 pe-4 font-normal">
                   {t('hours.sunday')}
                 </th>
-                <td>{t('hours.closed')}</td>
+                <td className="py-1.5 text-right">{t('hours.closed')}</td>
               </tr>
             </tbody>
           </table>
 
-          <p className="numerals mt-4">
-            <span className="font-display text-xs tracking-widest">{t('contact.phoneLabel')}</span>
+          <p className="mt-5">
+            <FieldLabel>{t('contact.phoneLabel')}</FieldLabel>
             <br />
-            <a href={business.phone.href} className="font-display text-2xl">
+            <a
+              href={business.phone.href}
+              className="font-form text-xl tabular-nums text-oxblood no-underline"
+            >
               {business.phone.display}
             </a>
           </p>
-        </PaintedPanel>
+        </RecordLeaf>
       </div>
 
-      <div className="mt-5 rounded-painted border-4 border-ink shadow-painted">
+      <div className="mt-5 overflow-hidden rounded-leaf border border-rule">
         <iframe
           src={business.links.mapEmbed}
           title={t('contact.mapTitle', { address: fullAddress() })}
@@ -199,12 +190,12 @@ export function HoursLocation() {
 export function ClosingCall() {
   const { t } = useTranslation()
   return (
-    <section className="mt-14 border-t-4 border-brush pt-8">
-      <h2 className="text-3xl">{streetLine()}</h2>
-      <p className="numerals mt-1 text-lg">{cityLine()}</p>
+    <section className="mt-16 border-t border-rule pt-10">
+      <h2 className="font-display text-2xl font-semibold sm:text-3xl">{streetLine()}</h2>
+      <p className="mt-1 font-form text-lg tabular-nums text-slate">{cityLine()}</p>
       <div className="mt-5 flex flex-wrap items-center gap-5">
         <CallButton size="loud" />
-        <p className="text-sm">{t('policies.walkIns')}</p>
+        <p className="text-sm text-slate">{t('policies.walkIns')}</p>
       </div>
     </section>
   )

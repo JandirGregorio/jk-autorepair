@@ -1,8 +1,9 @@
 /**
- * Painted primitives.
+ * Service-record primitives.
  *
- * Every edge here is hand-cut: hard offset shadows, brushstroke borders, no
- * blur, no gradient. The sign is painted boards butted against each other.
+ * The page is the shop's work order: oat paper, graphite ink, hairline rules,
+ * and one oxblood accent spent only on the phone. Panels are off-white leaves
+ * laid on the paper, lifted by one soft shadow rather than a hard offset.
  */
 
 import { useSyncExternalStore, type ReactNode } from 'react'
@@ -12,41 +13,44 @@ import { business, cityLine, isOpenAt } from '../content/business'
 import { formatRange, todayRange } from '../content/hours'
 import type { Language } from '../routes'
 
-type PanelProps = {
+type LeafProps = {
   children: ReactNode
-  /** Enamel is the off-white board; blue is the deep painted board. */
-  tone?: 'enamel' | 'deep'
   className?: string
 }
 
-export function PaintedPanel({ children, tone = 'enamel', className = '' }: PanelProps) {
-  const tones =
-    tone === 'enamel'
-      ? 'bg-enamel text-ink border-ink'
-      : 'bg-sign-blue-deep text-enamel border-brush'
+/** An off-white leaf laid on the paper. */
+export function RecordLeaf({ children, className = '' }: LeafProps) {
   return (
-    <div
-      className={`rounded-painted border-4 shadow-painted ${tones} ${className}`}
-    >
+    <div className={`rounded-leaf border border-rule bg-leaf shadow-leaf ${className}`}>
       {children}
     </div>
   )
 }
 
-/** An arrow that points at a real destination and leans toward it on hover. */
-export function PaintedArrow({ className = '' }: { className?: string }) {
+/** A small ruled label, the way a form names its fields. */
+export function FieldLabel({ children }: { children: ReactNode }) {
+  return (
+    <span className="font-form text-[0.7rem] uppercase tracking-[0.18em] text-slate">
+      {children}
+    </span>
+  )
+}
+
+/** A thin arrow that leans toward its destination on hover. */
+export function ArrowGlyph({ className = '' }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 32 16"
+      viewBox="0 0 28 12"
       aria-hidden="true"
-      className={`h-4 w-8 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 ${className}`}
+      className={`h-3 w-7 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 ${className}`}
     >
       <path
-        d="M1 8h26M21 2l6 6-6 6"
+        d="M0 6h24M19 1.5 24 6l-5 4.5"
         fill="none"
         stroke="currentColor"
-        strokeWidth="3"
-        strokeLinecap="square"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   )
@@ -58,15 +62,19 @@ export function CallButton({ size = 'normal' }: { size?: 'normal' | 'loud' }) {
   return (
     <a
       href={business.phone.href}
-      className={`group inline-flex flex-col items-start gap-0.5 rounded-painted border-4 border-ink bg-painted-red text-enamel shadow-painted transition-transform duration-150 ease-out hover:-translate-y-0.5 sm:flex-row sm:items-center sm:gap-3 ${
-        loud ? 'px-5 py-3 text-2xl sm:px-6 sm:py-4 sm:text-4xl' : 'px-4 py-3 text-base sm:text-lg'
+      className={`inline-flex items-center gap-3 rounded-leaf bg-oxblood text-paper no-underline transition-colors duration-150 hover:bg-oxblood-deep ${
+        loud ? 'px-6 py-4' : 'px-4 py-2.5'
       }`}
     >
-      <span className="font-display text-[0.6em] tracking-widest sm:text-[1em] sm:tracking-normal">
+      <span className={`font-display font-semibold ${loud ? 'text-lg' : 'text-sm'}`}>
         {t('actions.call')}
       </span>
-      {/* The number never breaks across lines: it is the whole point of the button. */}
-      <span className="numerals whitespace-nowrap font-display">{business.phone.display}</span>
+      {/* The number never wraps: it is the point of the button. */}
+      <span
+        className={`whitespace-nowrap font-form tabular-nums ${loud ? 'text-2xl sm:text-3xl' : 'text-base'}`}
+      >
+        {business.phone.display}
+      </span>
     </a>
   )
 }
@@ -78,22 +86,22 @@ export function DirectionsLink({ className = '' }: { className?: string }) {
       href={business.links.directions}
       target="_blank"
       rel="noreferrer"
-      className={`group inline-flex items-center gap-2 font-display text-sign-yellow underline decoration-sign-yellow ${className}`}
+      className={`group inline-flex items-center gap-2 font-display text-sm font-semibold text-oxblood ${className}`}
     >
       {t('actions.directions')}
-      <PaintedArrow />
+      <ArrowGlyph />
     </a>
   )
 }
 
 /**
- * The open/closed enamel badge.
+ * The open/closed stamp.
  *
  * It reads the shop's clock, not the visitor's, and only after hydration: the
- * prerendered HTML has no idea what time it is where the visitor stands, and
- * painting a guess would either lie or break hydration.
+ * prerendered HTML cannot know what time it is, and painting a guess would
+ * either lie or break hydration.
  */
-export function OpenBadge({ language }: { language: Language }) {
+export function OpenStamp({ language }: { language: Language }) {
   const { t } = useTranslation()
   const minute = useSyncExternalStore(subscribeToMinute, currentMinute, noMinuteOnServer)
 
@@ -106,42 +114,18 @@ export function OpenBadge({ language }: { language: Language }) {
   return (
     <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
       <span
-        className={`rounded-painted border-2 border-ink px-2 py-1 font-display text-sm ${
-          open ? 'bg-sign-yellow text-ink' : 'bg-enamel text-ink'
+        className={`rounded-leaf border px-2 py-1 font-form text-[0.7rem] uppercase tracking-[0.14em] ${
+          open ? 'border-oxblood text-oxblood' : 'border-rule-strong text-slate'
         }`}
       >
         {open ? t('hours.openNow') : t('hours.closedNow')}
       </span>
-      <span className="numerals text-sm">
+      <span className="font-form text-sm tabular-nums text-slate">
         {today
           ? t('hero.hoursToday', { hours: formatRange(today, language) })
           : `${t('hours.sunday')}: ${t('hours.closed')}`}
       </span>
     </p>
-  )
-}
-
-/**
- * The address, painted as one plate.
- *
- * "Suite C" sits on its own line at the same weight as the street, because the
- * building has units A, B and C and the Google Business Profile says Suite C.
- * Anything else costs the shop its local ranking.
- */
-export function AddressPlate({ tone = 'deep' }: { tone?: 'enamel' | 'deep' }) {
-  const { t } = useTranslation()
-  return (
-    <PaintedPanel tone={tone} className="p-5">
-      <p className="font-display text-xs tracking-widest">{t('contact.addressLabel')}</p>
-      <address className="mt-2 not-italic">
-        <span className="block font-display text-2xl sm:text-3xl">{business.address.street}</span>
-        <span className="block font-display text-2xl text-sign-yellow sm:text-3xl">
-          {business.address.unit}
-        </span>
-        <span className="numerals mt-1 block text-lg">{cityLine()}</span>
-      </address>
-      <DirectionsLink className="mt-3" />
-    </PaintedPanel>
   )
 }
 
@@ -165,10 +149,40 @@ function noMinuteOnServer(): null {
   return null
 }
 
-/** The one brush-script line on the site. */
-export function SpanishLine({ className = '' }: { className?: string }) {
+/**
+ * The address, ruled like a filled-in form field.
+ *
+ * "Suite C" sits on its own ruled line at the same weight as the street: the
+ * building has units A, B and C, and the Google Business Profile is registered
+ * with Suite C. Anything else costs the shop its local ranking.
+ */
+export function AddressBlock({ className = '' }: { className?: string }) {
   const { t } = useTranslation()
   return (
-    <p className={`font-script text-sign-yellow ${className}`}>{t('contact.spanishSpoken')}</p>
+    <RecordLeaf className={`p-5 ${className}`}>
+      <FieldLabel>{t('contact.addressLabel')}</FieldLabel>
+      <address className="mt-3 not-italic">
+        <span className="block border-b border-rule pb-1 font-display text-xl font-semibold">
+          {business.address.street}
+        </span>
+        <span className="block border-b border-rule py-1 font-display text-xl font-semibold">
+          {business.address.unit}
+        </span>
+        <span className="block pt-1 font-form text-base tabular-nums text-slate">{cityLine()}</span>
+      </address>
+      <DirectionsLink className="mt-3" />
+    </RecordLeaf>
+  )
+}
+
+/** Stated plainly, in the form's own voice. */
+export function SpanishNote({ className = '' }: { className?: string }) {
+  const { t } = useTranslation()
+  return (
+    <span
+      className={`inline-block rounded-leaf border border-rule-strong px-2 py-1 font-form text-[0.7rem] uppercase tracking-[0.14em] text-graphite ${className}`}
+    >
+      {t('contact.spanishSpoken')}
+    </span>
   )
 }

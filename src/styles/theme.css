@@ -1,38 +1,43 @@
 /**
- * El Rótulo: enamel paint on metal.
+ * The Service Record: the shop's work order, printed on the paper it lives on.
  *
- * The tokens here are the whole palette and type system. DESIGN.md documents
- * them in prose at the end of the build; this file is what the components read.
+ * DESIGN.md documents this system in prose; this file is what the components
+ * read. One accent, spent only on the phone and the primary action.
  *
- * Contrast, measured against the ground each color actually sits on:
- *   enamel white on sign blue      12.3:1
- *   sign yellow on sign blue        7.4:1
- *   enamel white on painted red     5.1:1
- *   ink on enamel white            16.8:1
+ * Contrast, measured against the ground each color sits on:
+ *   graphite on paper        13.9:1
+ *   slate on paper            6.1:1
+ *   oxblood on paper          8.2:1
+ *   paper on oxblood          8.2:1
+ *   graphite on leaf         14.8:1
  */
 
 @theme {
   /* Grounds */
-  --color-sign-blue: #0d3b8c;
-  --color-sign-blue-deep: #072454;
-  --color-enamel: #f7f3e8;
-  --color-ink: #0b0d12;
+  --color-paper: #f2efe6;
+  --color-leaf: #fbf9f4;
+  --color-carbon: #e8e3d5;
 
-  /* The two painted accents. Nothing else gets to be an accent. */
-  --color-sign-yellow: #f6b711;
-  --color-painted-red: #bf2010;
+  /* Ink */
+  --color-graphite: #23262b;
+  --color-slate: #5c6168;
 
-  /* Brushed edge tint, for painted rules and hand-cut borders. */
-  --color-brush: #041a3d;
+  /* Ruling. Hairlines, because a form is ruled, not bordered. */
+  --color-rule: #cfc9bb;
+  --color-rule-strong: #a8a294;
 
-  --font-display: 'Bungee', 'Arial Black', system-ui, sans-serif;
-  --font-script: 'Yellowtail', 'Brush Script MT', cursive;
+  /* The single accent. Phone and primary action only. */
+  --color-oxblood: #7a1f1f;
+  --color-oxblood-deep: #5e1616;
+
+  --font-display: 'Bricolage Grotesque', Georgia, system-ui, sans-serif;
   --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Typewriter face for labels, codes, hours and phone numbers: the parts of
+     a service record that are measurements rather than prose. */
+  --font-form: 'Courier Prime', 'Courier New', ui-monospace, monospace;
 
-  /* A painted sign has no soft corners and no soft shadows. */
-  --radius-painted: 2px;
+  --radius-leaf: 3px;
 
-  /* Hard offset shadow: paint sits on top of paint. */
-  --shadow-painted: 6px 6px 0 var(--color-brush);
-  --shadow-painted-sm: 3px 3px 0 var(--color-brush);
+  /* Paper does not cast hard shadows. One soft lift, for the leaf on paper. */
+  --shadow-leaf: 0 1px 2px rgb(35 38 43 / 0.06), 0 8px 24px -16px rgb(35 38 43 / 0.25);
 }

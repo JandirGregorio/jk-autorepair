@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-import { AddressPlate, CallButton, PaintedArrow } from '../components/sign'
+import { AddressBlock, ArrowGlyph, CallButton } from '../components/sign'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 import { hrefFor } from '../hrefs'
 import { pathFor } from '../routes'
@@ -15,23 +15,21 @@ export default function NotFoundPage() {
   useDocumentHead(t('notFound.title'), language)
 
   return (
-    <div className="mx-auto max-w-3xl px-4 pt-12 sm:px-6">
-      <h1 className="text-4xl sm:text-6xl">
-        <span className="block text-sign-yellow [text-shadow:6px_6px_0_var(--color-brush)]">
-          {t('notFound.title')}
-        </span>
+    <div className="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
+      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-5xl">
+        {t('notFound.title')}
       </h1>
-      <p className="mt-4 text-lg">{t('notFound.body')}</p>
+      <p className="mt-4 text-lg leading-relaxed">{t('notFound.body')}</p>
 
-      <div className="mt-7 flex flex-wrap items-center gap-5">
+      <div className="mt-7 flex flex-wrap items-center gap-6">
         <CallButton size="loud" />
         {/* A real link, not a router link: 404.html can be served at any path. */}
         <a
           href={hrefFor(pathFor('home', language))}
-          className="group inline-flex items-center gap-2 font-display text-sign-yellow"
+          className="group inline-flex items-center gap-2 font-display text-sm font-semibold text-oxblood no-underline"
         >
           {t('notFound.home')}
-          <PaintedArrow />
+          <ArrowGlyph />
         </a>
       </div>
 
@@ -39,13 +37,13 @@ export default function NotFoundPage() {
         href={hrefFor(pathFor('home', other))}
         lang={other}
         hrefLang={other}
-        className="mt-4 inline-block font-display text-sm text-sign-yellow"
+        className="mt-4 inline-block font-form text-xs uppercase tracking-[0.14em] text-slate"
       >
         {t('notFound.english')}
       </a>
 
-      <div className="mt-10">
-        <AddressPlate tone="deep" />
+      <div className="mt-12">
+        <AddressBlock />
       </div>
     </div>
   )
