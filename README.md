@@ -44,15 +44,15 @@ Three rules the tests enforce:
 
 ## Deploying
 
-GitHub Pages builds from `main` through [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml). Pull requests run the same checks without deploying.
+There is no CI in this repo, so nothing deploys on push. Build and publish the output yourself:
 
-One-time setup:
+```bash
+npm run lint && npm test && npm run build && npm run check-dist
+```
 
-1. Make the repository public (Pages needs that on the free plan).
-2. Settings → Pages → Source: **GitHub Actions**.
-3. Merge `development` into `main`.
+`dist/` then holds the whole site: four prerendered pages, `404.html`, `sitemap.xml` and `robots.txt`. Upload that directory to whatever serves the site.
 
-The site then serves from `https://jandirgregorio.github.io/jk-autorepair/`.
+For GitHub Pages specifically, the repository has to be public on the free plan, and Pages needs a source (a branch holding the built output, or a workflow you add yourself). `VITE_BASE` must match the path the site is served from.
 
 ## Adding the custom domain
 

@@ -33,10 +33,7 @@ dist-ssr
 .impeccable/mocks/
 .impeccable/questions/
 
-# Local Claude config and vendored skills (not shared)
-.claude/settings.local.json
-.claude/skills/
-
-# Workflows kept out of the repo by request
-.github/
+# Local tooling, deliberately not shared: Claude settings, vendored skills,
+# and CI workflows are kept on disk only.
 .claude/
+.github/
