@@ -1,146 +1,156 @@
 ---
 version: alpha
-name: El Rotulo
-description: The shop's hand-painted sign, scaled to a screen. Enamel on metal, deep sign blue ground, two painted accents, hard offset shadows, hand-cut edges, and a brush script reserved for one line.
+name: The Service Record
+description: The shop's work order, printed on the paper it lives on. Oat paper ground, graphite ink, hairline rules, tabular figures, and one oxblood accent spent only on the phone. The arrangement is the familiar auto-shop one; the materials are not.
 colors:
-  primary: "#0d3b8c"
-  primary-deep: "#072454"
-  secondary: "#f6b711"
-  tertiary: "#bf2010"
-  neutral: "#f7f3e8"
-  ink: "#0b0d12"
-  brush: "#041a3d"
+  primary: "#23262b"
+  secondary: "#5c6168"
+  tertiary: "#7a1f1f"
+  tertiary-deep: "#5e1616"
+  neutral: "#f2efe6"
+  leaf: "#fbf9f4"
+  carbon: "#e8e3d5"
+  rule: "#cfc9bb"
+  rule-strong: "#a8a294"
 typography:
   display-xl:
-    fontFamily: Bungee
-    fontSize: 72px
-    fontWeight: 400
-    lineHeight: 0.95
-    letterSpacing: -0.01em
-  display-lg:
-    fontFamily: Bungee
-    fontSize: 36px
-    fontWeight: 400
+    fontFamily: Bricolage Grotesque
+    fontSize: 60px
+    fontWeight: 700
     lineHeight: 1.02
-  heading-md:
-    fontFamily: Bungee
-    fontSize: 30px
-    fontWeight: 400
+    letterSpacing: -0.02em
+  display-lg:
+    fontFamily: Bricolage Grotesque
+    fontSize: 36px
+    fontWeight: 700
     lineHeight: 1.05
-  label-caps:
-    fontFamily: Bungee
-    fontSize: 12px
+    letterSpacing: -0.01em
+  heading-md:
+    fontFamily: Bricolage Grotesque
+    fontSize: 24px
+    fontWeight: 600
+    lineHeight: 1.15
+  body-lg:
+    fontFamily: Archivo
+    fontSize: 19px
     fontWeight: 400
-    letterSpacing: 0.1em
+    lineHeight: 1.6
   body-md:
     fontFamily: Archivo
     fontSize: 17px
     fontWeight: 400
-    lineHeight: 1.55
-  numerals:
-    fontFamily: Archivo
-    fontSize: 17px
-    fontWeight: 500
-    lineHeight: 1.4
-    fontFeature: "tnum"
-  script-accent:
-    fontFamily: Yellowtail
-    fontSize: 48px
+    lineHeight: 1.6
+  form-md:
+    fontFamily: Courier Prime
+    fontSize: 15px
     fontWeight: 400
-    lineHeight: 1.1
+    lineHeight: 1.5
+    fontFeature: "tnum"
+  form-label:
+    fontFamily: Courier Prime
+    fontSize: 11px
+    fontWeight: 400
+    letterSpacing: 0.18em
 rounded:
-  sm: 2px
+  sm: 3px
 spacing:
   xs: 4px
   sm: 8px
-  md: 16px
-  lg: 32px
-  xl: 56px
+  md: 20px
+  lg: 40px
+  xl: 64px
 components:
+  page:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.primary}"
+    typography: "{typography.body-md}"
+  leaf-panel:
+    backgroundColor: "{colors.leaf}"
+    textColor: "{colors.primary}"
+    rounded: "{rounded.sm}"
+    padding: "{spacing.md}"
+  photo-slot:
+    backgroundColor: "{colors.carbon}"
+    textColor: "{colors.secondary}"
+    typography: "{typography.form-label}"
+    rounded: "{rounded.sm}"
+  rule-hairline:
+    backgroundColor: "{colors.rule}"
+    height: "1px"
+  rule-emphasis:
+    backgroundColor: "{colors.rule-strong}"
+    height: "1px"
   button-call:
     backgroundColor: "{colors.tertiary}"
     textColor: "{colors.neutral}"
     typography: "{typography.display-lg}"
     rounded: "{rounded.sm}"
-  badge-open:
-    backgroundColor: "{colors.secondary}"
-    textColor: "{colors.ink}"
-    typography: "{typography.label-caps}"
-    rounded: "{rounded.sm}"
-  panel-enamel:
-    backgroundColor: "{colors.neutral}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.sm}"
-  panel-deep:
-    backgroundColor: "{colors.primary-deep}"
+  button-call-hover:
+    backgroundColor: "{colors.tertiary-deep}"
     textColor: "{colors.neutral}"
-    rounded: "{rounded.sm}"
   call-bar-mobile:
     backgroundColor: "{colors.tertiary}"
     textColor: "{colors.neutral}"
-    typography: "{typography.display-lg}"
-  sign-shadow:
-    backgroundColor: "{colors.brush}"
-    textColor: "{colors.neutral}"
+    typography: "{typography.form-md}"
 ---
 
-# El Rotulo
+# The Service Record
 
 ## Overview
 
-The site is JK Auto Repair's hand-painted sign, scaled to a screen. A painted sign is read from across a street by someone already moving, so it says who, what, where, and the phone number, in that order, at full voice. The page refuses the arrangement this category ships by default: a photo hero of a clean bay, a row of identical service cards, a review strip, and a map dropped at the bottom.
+The site is JK Auto Repair's service record: the work order a mechanic fills in, printed on the paper it lives on. The client asked for the arrangement customers already expect from an auto shop site, so the structure is conventional on purpose: a hero, service groups, reviews, makes, areas served, hours and map, and a closing call. The distinction comes from material and restraint rather than from an unusual layout.
 
-Everything is paint on metal. Panels butt against one another like painted boards, edges are hand-cut, and depth comes from one hard offset shadow rather than a blur. The visitor is a driver with a car that is misbehaving, standing outdoors on a phone, often reading Spanish first. Legibility outranks decoration everywhere.
+The visitor is a driver with a misbehaving car, standing outdoors on a phone, often reading Spanish first. The craft bar is the local Mercer County shops this competes with, and the way to beat them is clarity, legibility and trust rather than polish, since there are no photographs yet to out-polish anyone with.
 
 ## Colors
 
-The ground is deep sign blue and it owns the page. Two painted accents sit on it, and nothing else is allowed to become an accent.
+One ground, one ink, one accent. Nothing else earns color.
 
-- **Primary, sign blue (#0d3b8c):** the enamel field the whole site is painted on.
-- **Primary deep (#072454):** the darker board, used for panels that sit on the blue and for the footer.
-- **Secondary, sign yellow (#f6b711):** the lettering accent. It carries the shop name's second line, the open badge, arrows, and links.
-- **Tertiary, painted red (#bf2010):** reserved for the phone. The call button and the sticky phone bar are the only red on the site, so red always means "call".
-- **Neutral, enamel white (#f7f3e8):** body text on blue, and the light painted boards.
-- **Ink (#0b0d12):** text on enamel boards, and every painted border.
-- **Brush (#041a3d):** the offset shadow behind painted lettering and panels.
+- **Neutral, oat paper (#f2efe6):** the page. Warm enough to read as paper, dull enough to stay quiet outdoors.
+- **Leaf (#fbf9f4):** the off-white panels laid on the paper: address block, hours, service groups.
+- **Carbon (#e8e3d5):** the carbon-copy tint, used for photo slots and any awaiting-content state.
+- **Primary, graphite (#23262b):** all body and heading text. Not pure black, which reads as screen rather than print.
+- **Secondary, slate (#5c6168):** labels, captions, and the trade line under the shop name.
+- **Rule (#cfc9bb) and rule-strong (#a8a294):** hairlines. A form is ruled, not boxed, so borders stay 1px.
+- **Tertiary, oxblood (#7a1f1f):** the phone, the primary button, and the few links that lead somewhere decisive. Because it appears nowhere else, oxblood always means "act".
 
-Measured contrast: enamel on sign blue 12.3:1, sign yellow on sign blue 7.4:1, enamel on painted red 5.1:1, ink on enamel 16.8:1. Every pairing clears WCAG AA for its size.
+Measured contrast: graphite on paper 13.9:1, graphite on leaf 14.8:1, slate on paper 6.1:1, oxblood on paper 8.2:1, paper on oxblood 8.2:1. Every pairing clears WCAG AA.
 
 ## Typography
 
 Three faces, each with one job.
 
-- **Bungee** paints every heading, label, button and number. It comes out of American signage lettering, which is the point; it is never used for running text.
-- **Archivo** sets body copy and tabular numerals. It carries Spanish diacritics without fuss and stays readable at arm's length in daylight.
-- **Yellowtail** appears exactly once per page, on "Se habla español". A brush script used twice stops being a painted flourish and becomes a font choice.
+- **Bricolage Grotesque** sets headings and the shop name. It carries more personality than a neutral grotesque without raising its voice, which is what keeps the conventional arrangement from reading as a template.
+- **Archivo** sets body copy. It handles Spanish diacritics cleanly and stays legible in daylight.
+- **Courier Prime** sets everything a service record treats as a measurement: field labels, hours, the phone number, and the trust row. It is used for data, never as decoration for its own sake.
 
-Headings run tight (0.95 to 1.05 line height) because painted lettering stacks tight. Body runs at 1.55 and is capped near 65 characters. Phone numbers, hours and addresses use tabular figures so the digits line up like painted numerals.
+Headings run tight, with balanced wrapping. Body runs at 1.6 and stays near 65 characters. Every figure uses tabular numerals so hours and phone numbers align down the column.
 
 ## Layout
 
-One column of painted boards on a blue field, with an asymmetric grid: the hero splits three-to-two, and the service boards alternate three-of-five and two-of-five widths so they read as panels rather than a card row. Spacing steps are 4, 8, 16, 32 and 56 pixels, with more space above a heading than below it.
+One centered column at 1152px maximum, on a familiar vertical rhythm: hero, services, about and mission, reviews, photos, makes, areas, hours and location, closing call. The hero splits three-to-two, with the shop name and phone on the left and the ruled address block plus the photo slot on the right.
 
-The four things a stranger needs (name and trade, address with the unit, hours and open state, phone) are the four largest elements. On a phone the boards stack, the hero drops to 36px display type, and a red call bar pins to the bottom of the screen.
+Spacing steps are 4, 8, 20, 40 and 64 pixels, with more space above a heading than below it. On a phone everything stacks, and a slim oxblood call bar pins to the bottom of the screen.
 
 ## Elevation & Depth
 
-Depth is paint on paint: a hard offset shadow, 6px on desktop and 4px on phones, in brush navy with no blur. Lettering carries the same offset as a text shadow. There are no soft shadows, no glows, and no blur anywhere in the system.
+Paper does not cast hard shadows. Panels sit on the page with a 1px rule and one soft, low-contrast lift. There are no offset shadows, no glows, and no blur.
 
 ## Shapes
 
-Corners are 2px, which reads as a cut edge rather than a rounded one. Borders are 4px to 8px painted ink or brush navy; hairlines belong to a different medium. List bullets are small painted squares, not glyphs or emoji. The only drawn icon is an arrow, authored as SVG at a 3px stroke to match the painted line weight.
+Corners are 3px, barely rounded, closer to a cut sheet than a card. Rules are 1px hairlines. Awaiting-content frames use a 1px dashed rule so they read as a blank field on a form rather than as a broken image. The only drawn icon is a thin arrow at 1.5px stroke.
 
 ## Components
 
-- **Call button:** painted red board, enamel lettering, ink border, hard offset shadow. It lifts 2px on hover. The number never wraps; on phones the label stacks above it.
-- **Open badge:** sign yellow board with ink lettering when the shop is open, enamel when closed. It renders only after load, from the shop's own clock in America/New_York, so the prerendered HTML never claims a state it cannot know.
-- **Panels:** enamel boards with ink text, or deep blue boards with enamel text, alternating down the page.
-- **Address plate:** the unit ("Suite C") sits on its own line in sign yellow at the same weight as the street, because the building has units A, B and C and the Google Business Profile is registered with Suite C.
-- **Painted arrow:** travels 4px toward its destination on hover and focus. This is the site's one authored motion, and it is disabled under reduced-motion.
-- **Mobile call bar:** fixed to the bottom under 640px, painted red, the phone number always one tap away.
+- **Call button:** oxblood, paper text, label in the display face and the number in the typewriter face so it never wraps. It darkens on hover rather than moving.
+- **Open stamp:** a small ruled chip beside today's hours, oxblood when open, slate when closed. It renders only after load, from the shop's clock in America/New_York, so the prerendered HTML never claims a state it cannot know.
+- **Address block:** a leaf panel with ruled lines, the street on one line and "Suite C" on its own, because the building has units A, B and C and the Google Business Profile is registered with Suite C.
+- **Service groups:** leaf panels, each item on its own ruled row.
+- **Photo slot:** a carbon frame at 4:3 with a dashed rule and a label saying photos are coming. Dropping in real images is a content change, not a layout change.
+- **Mobile call bar:** fixed to the bottom under 640px, oxblood, the number always one tap away.
 
 ## Do's and Don'ts
 
-Do keep red for the phone alone. Do let the blue ground own the page. Do set the address, hours and phone in tabular figures. Do write Spanish as Spanish rather than as a translation of the English.
+Do keep oxblood for the phone and the primary action alone. Do set every figure in tabular numerals. Do let hairlines carry structure instead of heavy borders or shadows. Do write Spanish as Spanish rather than as a translation of the English.
 
-Don't add a third accent color. Don't introduce soft shadows, glass, gradients, or gradient text. Don't turn the service boards into a grid of equal cards with icons. Don't put a kicker or eyebrow above a heading. Don't use emoji or glyphs as icons. Don't show a star rating, a review count, or a testimonial: the shop has six Google reviews and no testimonials on file, and the site links to the real ones instead of quoting invented ones.
+Don't add a second accent color. Don't introduce gradients, glass, gradient text, or hard offset shadows. Don't put a kicker or eyebrow above a heading. Don't fill the photo slot with stock photography or a texture standing in for a picture. Don't show a star rating, a review count, or a testimonial: the shop has six Google reviews and none on file, so the site links to the real ones instead.

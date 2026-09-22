@@ -47,6 +47,7 @@ Work the shop does: maintenance (oil changes, filters, fluids, tune-ups, tire ro
 - Spanish is the default language; English is the alternate. Spanish copy is written as Spanish, not translated word for word.
 - No invented testimonials, reviews, ratings, customer counts, or success rates. No badges for services the shop doesn't have.
 - No logo exists yet, so the identity carries through type.
+- **Standing preference (2026-09-22):** the client wants the familiar auto-shop arrangement rather than an unconventional one, and asked for a quiet palette. A first attempt in a hand-painted sign world was rejected as too loud, too colorful, and still too generic. Future work keeps the conventional structure and earns distinction through material and restraint.
 
 ## Evidence on Hand
 
