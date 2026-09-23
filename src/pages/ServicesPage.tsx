@@ -32,8 +32,9 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* No section heading above these, so the groups carry h2 themselves. */}
       <Band>
-        <ServiceBands />
+        <ServiceBands level={2} />
       </Band>
 
       <Band muted>

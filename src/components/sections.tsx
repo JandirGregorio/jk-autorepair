@@ -13,14 +13,24 @@ import { galleryPhotos, photoSrc, photoSrcSet } from '../content/photos'
 import { useRouteInfo } from '../hooks/useRoute'
 import { AddressBlock, CallButton, DirectionsButton, Kicker, PhotoFrame } from './sign'
 
-export function ServiceBands() {
+/**
+ * The service groups.
+ *
+ * The heading level is a prop because this block sits at two different depths.
+ * On the home page an "Services" h2 introduces it, so the groups are h3. The
+ * services page has no such heading, so there the groups are the h2 and an h1
+ * to h3 jump is avoided. The type is identical either way; only the outline a
+ * screen reader reads out changes.
+ */
+export function ServiceBands({ level = 3 }: { level?: 2 | 3 }) {
   const { t } = useTranslation()
+  const Heading = level === 2 ? 'h2' : 'h3'
 
   return (
     <div className="grid gap-x-12 gap-y-14 sm:grid-cols-2">
       {business.services.map((group) => (
         <div key={group.id}>
-          <h3 className="text-2xl font-light">{t(`services.${group.id}.label`)}</h3>
+          <Heading className="text-2xl font-light">{t(`services.${group.id}.label`)}</Heading>
           <ul className="mt-5 space-y-2 text-smoke">
             {group.items.map((item) => (
               <li key={item}>{t(`services.${group.id}.items.${item}`)}</li>
