@@ -15,12 +15,13 @@ export type Language = (typeof languages)[number]
 
 export const defaultLanguage: Language = 'es'
 
-export const pages = ['home', 'services'] as const
+export const pages = ['home', 'services', 'legal'] as const
 export type Page = (typeof pages)[number]
 
 const paths: Record<Page, Record<Language, string>> = {
   home: { es: '/', en: '/en/' },
   services: { es: '/servicios/', en: '/en/services/' },
+  legal: { es: '/avisos-legales/', en: '/en/legal/' },
 }
 
 export function pathFor(page: Page, language: Language): string {

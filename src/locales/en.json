@@ -2,6 +2,7 @@
   "nav": {
     "home": "Home",
     "services": "Services",
+    "legal": "Legal",
     "skipToContent": "Skip to content"
   },
   "actions": {
@@ -10,6 +11,7 @@
     "directions": "Get directions",
     "readReviews": "Read Google reviews",
     "leaveReview": "Leave a review",
+    "showMap": "Show the map",
     "switchToEnglish": "English",
     "switchToSpanish": "Español"
   },
@@ -27,6 +29,7 @@
     "addressLabel": "Address",
     "phoneLabel": "Phone",
     "mapTitle": "Map of JK Auto Repair at {{address}}",
+    "mapNotice": "The map comes from Google. Load it and Google will receive your IP address and may set its own cookies. Directions work without loading it.",
     "spanishSpoken": "Se habla español"
   },
   "services": {
@@ -93,6 +96,10 @@
     "services": {
       "title": "Services | JK Auto Repair in Hamilton Township, NJ",
       "description": "Maintenance, brakes and suspension, diagnostics and engine work, electrical and A/C. All makes and models. Free estimates in Hamilton Township, NJ."
+    },
+    "legal": {
+      "title": "Legal | JK Auto Repair in Hamilton Township, NJ",
+      "description": "Privacy, terms of use and accessibility for the JK Auto Repair website. This site collects no personal data and sets no cookies."
     }
   },
   "hero": {
@@ -130,6 +137,84 @@
   },
   "servicesPage": {
     "intro": "Here is what we do. If your problem is not on the list, call and ask."
+  },
+  "legal": {
+    "title": "Legal",
+    "intro": "Three short notices about this website. Written in plain words, because a page nobody can read protects nobody.",
+    "updated": "Last updated {{date}}",
+    "privacy": {
+      "title": "Privacy",
+      "collect": {
+        "title": "What this site collects",
+        "body": "Nothing. There is no contact form, no account to create, no newsletter and no shopping cart. There is no analytics, no advertising tracker and no social media pixel. The site sets no cookies and saves nothing in your browser."
+      },
+      "hosting": {
+        "title": "Hosting",
+        "body": "The site is hosted on GitHub Pages. Like any web host, GitHub records standard server information when a page is requested, including the IP address that asked for it. Those records belong to GitHub. The shop does not see them and cannot get at them."
+      },
+      "map": {
+        "title": "The map",
+        "body": "The map does not load until you press the button to load it. When you do, your browser connects to Google, which receives your IP address and may set its own cookies. That connection is between you and Google, under Google's privacy policy. If you never press the button, this site contacts no other company at all."
+      },
+      "links": {
+        "title": "Links to Google",
+        "body": "The reviews and directions buttons open Google in a new tab. Once you are there, Google's terms and privacy policy apply instead of ours."
+      },
+      "phone": {
+        "title": "When you call or come by",
+        "body": "That is a conversation, not a website visit, and this notice does not cover it. We write down what we need to do the work and to keep the records a repair shop has to keep: your name, a phone number, your vehicle, and what was done to it. We do not sell that, rent it, or hand it to anyone for marketing."
+      },
+      "children": {
+        "title": "Children",
+        "body": "This site is a shop's listing. It is not aimed at children, and it asks nobody of any age for personal information."
+      },
+      "contact": {
+        "title": "Questions",
+        "body": "Ask in plain words, in Spanish or English. Call the shop or come by:"
+      }
+    },
+    "terms": {
+      "title": "Terms of use",
+      "info": {
+        "title": "What this site is",
+        "body": "A description of the shop and the work it does. It is not an offer, a quote or a contract, and nothing on it creates one."
+      },
+      "estimates": {
+        "title": "Prices and estimates",
+        "body": "No price here is a quote, because there are no prices here. The estimate for your car comes after somebody has looked at it. In New Jersey you have the right to a written estimate before the work starts and to approve the cost first. That happens at the shop, on paper, not on this page."
+      },
+      "hours": {
+        "title": "Hours and services",
+        "body": "Hours, services and the makes we work on can change, and on any given day this page may be behind. Call before making the trip if it matters."
+      },
+      "warranty": {
+        "title": "Warranty",
+        "body": "Whatever warranty comes with a repair is the one written on your invoice. Nothing on this site adds to it or takes anything away from it."
+      },
+      "trademarks": {
+        "title": "Vehicle makes",
+        "body": "The makes named on this site are named so you can tell whether we work on your car. They are the trademarks of their owners. JK Auto Repair is an independent shop, not an authorized dealer of any manufacturer, and not affiliated with one."
+      },
+      "content": {
+        "title": "Photographs and text",
+        "body": "The photographs are of this shop and belong to it. Please do not reuse them to stand for another business."
+      }
+    },
+    "accessibility": {
+      "title": "Accessibility",
+      "goal": {
+        "title": "What we are aiming for",
+        "body": "This site is built to follow the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA. We test against them. We are a repair shop and not a software company, so we are not going to claim the result is perfect."
+      },
+      "how": {
+        "title": "How it is built",
+        "body": "Every page can be used with a keyboard alone and read with a screen reader. Every photograph has a written description. The text can be enlarged without anything breaking or overlapping. All of the information is in the page itself, so it still reads when JavaScript does not run. There is very little movement, and the site follows your system setting if you have asked for less of it."
+      },
+      "help": {
+        "title": "If something is in your way",
+        "body": "Call the shop. We will tell you anything this site says and book you in over the phone. You do not have to use the website to be a customer."
+      }
+    }
   },
   "notFound": {
     "title": "This page does not exist",

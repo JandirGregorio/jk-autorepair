@@ -79,6 +79,12 @@ function Footer() {
           <p className="text-sm font-medium uppercase tracking-[0.22em]">{business.name}</p>
           <p className="mt-3 text-sm text-fog">{t('footer.tagline')}</p>
           <p className="mt-2 text-sm text-fog">{t('contact.spanishSpoken')}</p>
+          <Link
+            to={pathFor('legal', language)}
+            className="mt-4 inline-block text-sm text-fog no-underline hover:text-canvas"
+          >
+            {t('nav.legal')}
+          </Link>
         </div>
 
         <div>

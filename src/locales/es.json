@@ -2,6 +2,7 @@
   "nav": {
     "home": "Inicio",
     "services": "Servicios",
+    "legal": "Avisos legales",
     "skipToContent": "Ir al contenido"
   },
   "actions": {
@@ -10,6 +11,7 @@
     "directions": "Cómo llegar",
     "readReviews": "Ver reseñas en Google",
     "leaveReview": "Dejar una reseña",
+    "showMap": "Ver el mapa",
     "switchToEnglish": "English",
     "switchToSpanish": "Español"
   },
@@ -27,6 +29,7 @@
     "addressLabel": "Dirección",
     "phoneLabel": "Teléfono",
     "mapTitle": "Mapa de JK Auto Repair en {{address}}",
+    "mapNotice": "El mapa viene de Google. Si lo carga, Google recibe su dirección IP y puede poner sus propias cookies. El botón de cómo llegar funciona sin cargarlo.",
     "spanishSpoken": "Se habla español"
   },
   "services": {
@@ -93,6 +96,10 @@
     "services": {
       "title": "Servicios | JK Auto Repair en Hamilton Township, NJ",
       "description": "Mantenimiento, frenos y suspensión, diagnóstico y motor, eléctrico y aire acondicionado. Todas las marcas y modelos. Presupuestos gratis en Hamilton Township, NJ."
+    },
+    "legal": {
+      "title": "Avisos legales | JK Auto Repair en Hamilton Township, NJ",
+      "description": "Privacidad, términos de uso y accesibilidad del sitio de JK Auto Repair. Este sitio no recoge datos personales y no usa cookies."
     }
   },
   "hero": {
@@ -130,6 +137,84 @@
   },
   "servicesPage": {
     "intro": "Esto es lo que hacemos. Si no ve su problema en la lista, llame y pregunte."
+  },
+  "legal": {
+    "title": "Avisos legales",
+    "intro": "Tres avisos cortos sobre este sitio. En palabras sencillas, porque una página que nadie entiende no protege a nadie.",
+    "updated": "Última actualización: {{date}}",
+    "privacy": {
+      "title": "Privacidad",
+      "collect": {
+        "title": "Qué recoge este sitio",
+        "body": "Nada. No hay formulario de contacto, no hay cuenta que crear, no hay boletín y no hay carrito de compras. No hay analítica, no hay rastreador de publicidad y no hay píxel de redes sociales. El sitio no usa cookies y no guarda nada en su navegador."
+      },
+      "hosting": {
+        "title": "Dónde está alojado",
+        "body": "El sitio está alojado en GitHub Pages. Como cualquier servidor, GitHub anota datos básicos cada vez que alguien pide una página, entre ellos la dirección IP desde donde la pidieron. Esos registros son de GitHub. El taller no los ve ni puede llegar a ellos."
+      },
+      "map": {
+        "title": "El mapa",
+        "body": "El mapa no se carga hasta que usted oprime el botón para cargarlo. Cuando lo hace, su navegador se conecta con Google, que recibe su dirección IP y puede poner sus propias cookies. Esa conexión es entre usted y Google, bajo la política de privacidad de Google. Si nunca oprime el botón, este sitio no se comunica con ninguna otra empresa."
+      },
+      "links": {
+        "title": "Enlaces a Google",
+        "body": "Los botones de reseñas y de cómo llegar abren Google en una pestaña nueva. Ya estando ahí mandan los términos y la política de privacidad de Google, no los nuestros."
+      },
+      "phone": {
+        "title": "Cuando llama o viene al taller",
+        "body": "Eso es una conversación, no una visita al sitio, y este aviso no la cubre. Anotamos lo que hace falta para hacer el trabajo y para llevar los registros que un taller tiene que llevar: su nombre, un teléfono, su vehículo y qué se le hizo. Eso no lo vendemos, no lo rentamos y no se lo pasamos a nadie para publicidad."
+      },
+      "children": {
+        "title": "Menores de edad",
+        "body": "Este sitio es la ficha de un taller. No está dirigido a menores y no le pide datos personales a nadie, de ninguna edad."
+      },
+      "contact": {
+        "title": "Preguntas",
+        "body": "Pregunte en palabras sencillas, en español o en inglés. Llame al taller o pase por aquí:"
+      }
+    },
+    "terms": {
+      "title": "Términos de uso",
+      "info": {
+        "title": "Qué es este sitio",
+        "body": "Una descripción del taller y del trabajo que hace. No es una oferta, ni un presupuesto, ni un contrato, y nada de lo que dice crea uno."
+      },
+      "estimates": {
+        "title": "Precios y presupuestos",
+        "body": "Ningún precio de aquí es un presupuesto, porque aquí no hay precios. El presupuesto de su carro sale después de que alguien lo revisa. En New Jersey usted tiene derecho a un presupuesto por escrito antes de que empiece el trabajo y a aprobar el costo primero. Eso pasa en el taller, en papel, no en esta página."
+      },
+      "hours": {
+        "title": "Horario y servicios",
+        "body": "El horario, los servicios y las marcas que atendemos pueden cambiar, y cualquier día esta página puede estar atrasada. Si le urge, llame antes de hacer el viaje."
+      },
+      "warranty": {
+        "title": "Garantía",
+        "body": "La garantía que traiga una reparación es la que está escrita en su factura. Nada de este sitio le agrega ni le quita nada."
+      },
+      "trademarks": {
+        "title": "Marcas de vehículos",
+        "body": "Las marcas que aparecen aquí están para que usted sepa si trabajamos su carro. Son marcas registradas de sus dueños. JK Auto Repair es un taller independiente, no es concesionario autorizado de ningún fabricante y no está afiliado a ninguno."
+      },
+      "content": {
+        "title": "Fotos y textos",
+        "body": "Las fotos son de este taller y le pertenecen. Por favor no las use para representar otro negocio."
+      }
+    },
+    "accessibility": {
+      "title": "Accesibilidad",
+      "goal": {
+        "title": "Qué buscamos",
+        "body": "Este sitio está hecho siguiendo las Pautas de Accesibilidad para el Contenido Web (WCAG) 2.1 en nivel AA, y lo probamos contra ellas. Somos un taller mecánico y no una empresa de software, así que no vamos a decir que quedó perfecto."
+      },
+      "how": {
+        "title": "Cómo está hecho",
+        "body": "Cada página se puede usar solo con el teclado y se puede leer con lector de pantalla. Cada foto tiene su descripción escrita. El texto se puede agrandar sin que nada se rompa ni se encime. Toda la información está en la página misma, así que se sigue leyendo aunque no corra JavaScript. Hay muy poco movimiento, y el sitio respeta la configuración de su sistema si usted pidió menos."
+      },
+      "help": {
+        "title": "Si algo le estorba",
+        "body": "Llame al taller. Le decimos cualquier cosa que diga este sitio y le agendamos por teléfono. Usted no tiene que usar la página para ser cliente."
+      }
+    }
   },
   "notFound": {
     "title": "Esta página no existe",

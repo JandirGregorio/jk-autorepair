@@ -46,6 +46,14 @@ export const business = {
 
   yearsExperience: 20,
 
+  /**
+   * When the notices on /avisos-legales/ were last changed, ISO 8601.
+   *
+   * A policy that does not say when it was written is worth less than no
+   * policy. Bump this whenever the text or the shop's actual practice changes.
+   */
+  policiesUpdated: '2026-09-23',
+
   /** Confirmed with the owner. Each one is true; none is a marketing claim. */
   policies: {
     walkIns: true,

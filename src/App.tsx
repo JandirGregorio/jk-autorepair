@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router'
 
 import { Layout } from './components/Layout'
 import HomePage from './pages/HomePage'
+import LegalPage from './pages/LegalPage'
 import NotFoundPage from './pages/NotFoundPage'
 import ServicesPage from './pages/ServicesPage'
 
@@ -15,8 +16,10 @@ export default function App() {
       <Route element={<Layout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/servicios/" element={<ServicesPage />} />
+        <Route path="/avisos-legales/" element={<LegalPage />} />
         <Route path="/en/" element={<HomePage />} />
         <Route path="/en/services/" element={<ServicesPage />} />
+        <Route path="/en/legal/" element={<LegalPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

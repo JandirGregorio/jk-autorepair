@@ -38,6 +38,15 @@ describe('routes', () => {
     expect(alternatePath('/en/')).toBe('/')
     expect(alternatePath('/servicios/')).toBe('/en/services/')
     expect(alternatePath('/en/services/')).toBe('/servicios/')
+    expect(alternatePath('/avisos-legales/')).toBe('/en/legal/')
+    expect(alternatePath('/en/legal/')).toBe('/avisos-legales/')
+  })
+
+  it('gives the legal notices a URL in each language', () => {
+    expect(pathFor('legal', 'es')).toBe('/avisos-legales/')
+    expect(pathFor('legal', 'en')).toBe('/en/legal/')
+    expect(pageOf('/avisos-legales/')).toBe('legal')
+    expect(languageOf('/en/legal/')).toBe('en')
   })
 
   it('tolerates a missing trailing slash, a query, or a hash', () => {
