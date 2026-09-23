@@ -183,7 +183,7 @@ export function PhotoFrame({ className = '' }: { className?: string }) {
 export function HeroImage({ photo }: { photo: Photo }) {
   const { t } = useTranslation()
   return (
-    <div aria-hidden={false} className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden">
       <img
         src={photoSrc(photo, 1600)}
         srcSet={photoSrcSet(photo)}

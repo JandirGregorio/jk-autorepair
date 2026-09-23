@@ -4,7 +4,7 @@
  * lines in gray, and pill actions. No cards, no borders, no color.
  */
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { business, cityLine, fullAddress, streetLine } from '../content/business'
@@ -128,15 +128,56 @@ export function HoursLocationBand() {
       </div>
 
       <div className="mt-12">
-        <iframe
-          src={business.links.mapEmbed}
-          title={t('contact.mapTitle', { address: fullAddress() })}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          className="block h-80 w-full sm:h-[28rem]"
-        />
+        <MapPanel />
       </div>
     </>
+  )
+}
+
+/**
+ * The map, which stays unloaded until somebody asks for it.
+ *
+ * An embedded Google map is the only third party this site touches. Left to
+ * itself it phones Google on every single page view, for every visitor,
+ * whether or not they ever glance at it. Holding it back until a click means
+ * the privacy notice can say something true and simple: nothing leaves here
+ * unless you ask it to. Directions already work without it, which is what
+ * most people actually want.
+ */
+function MapPanel() {
+  const { t } = useTranslation()
+  const [loaded, setLoaded] = useState(false)
+  const frameRef = useRef<HTMLIFrameElement>(null)
+
+  // The button that was focused has just been replaced, so send focus to what
+  // replaced it rather than dropping it back to the top of the document.
+  useEffect(() => {
+    if (loaded) frameRef.current?.focus()
+  }, [loaded])
+
+  if (!loaded) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-5 border border-line px-6 py-14 text-center">
+        <p className="max-w-md text-sm leading-relaxed text-smoke">{t('contact.mapNotice')}</p>
+        <button
+          type="button"
+          onClick={() => setLoaded(true)}
+          className="inline-flex items-center justify-center rounded-pill border border-line px-8 py-3.5 text-sm font-medium transition-colors duration-200 hover:border-ink"
+        >
+          {t('actions.showMap')}
+        </button>
+      </div>
+    )
+  }
+
+  return (
+    <iframe
+      ref={frameRef}
+      src={business.links.mapEmbed}
+      title={t('contact.mapTitle', { address: fullAddress() })}
+      referrerPolicy="no-referrer"
+      className="block h-80 w-full sm:h-[28rem]"
+    />
   )
 }
 
@@ -220,6 +261,10 @@ export function PhotoCarousel() {
       <div className="mt-6 flex items-center justify-between">
         {/* Clickable, so they are real buttons with real labels rather than
             decoration everyone but a keyboard user can operate. */}
+        {/* The bar stays 6px tall because the design wants a hairline, but the
+            button around it is a full 24px square: a 6px target is a miss for
+            anyone whose hands are not steady, and this shop's customers skew
+            older. */}
         <div className="flex gap-2">
           {galleryPhotos.map((photo, index) => (
             <button
@@ -228,15 +273,21 @@ export function PhotoCarousel() {
               onClick={() => scrollToIndex(index)}
               aria-label={t('photos.goTo', { index: index + 1 })}
               aria-current={index === active ? 'true' : undefined}
-              className={`h-1.5 w-6 transition-colors duration-200 ${
-                index === active ? 'bg-ink' : 'bg-line hover:bg-smoke'
-              }`}
-            />
+              className="group flex h-6 w-6 items-center justify-center"
+            >
+              <span
+                className={`block h-1.5 w-full transition-colors duration-200 ${
+                  index === active ? 'bg-ink' : 'bg-line group-hover:bg-smoke'
+                }`}
+              />
+            </button>
           ))}
         </div>
 
         <div className="flex items-center gap-3">
-          <span className="text-sm tabular-nums text-smoke">
+          {/* Swiping gives a sighted visitor instant feedback. Announcing the
+              count gives everyone else the same thing. */}
+          <span aria-live="polite" className="text-sm tabular-nums text-smoke">
             {t('photos.position', { index: active + 1, total: count })}
           </span>
           {/* Both arrows wrap, so the last photo leads back to the first and
