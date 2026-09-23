@@ -27,11 +27,13 @@ dist-ssr
 .understand-anything/
 .ua/
 
-# impeccable working output
-.impeccable/review/
-.impeccable/build/
-.impeccable/mocks/
-.impeccable/questions/
+# impeccable working files, kept on disk only
+.impeccable/
+
+# Design and product records, kept on disk only. The tokens they describe
+# ship in src/styles/theme.css, which is what the app actually reads.
+DESIGN.md
+PRODUCT.md
 
 # Local tooling, deliberately not shared: Claude settings, vendored skills,
 # and CI workflows are kept on disk only.

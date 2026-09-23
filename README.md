@@ -20,7 +20,7 @@ npm run dev
 | `npm test` | Unit tests (routes, schema, copy rules) |
 | `npm run check-dist` | Reads the built HTML: language, canonical, hreflang, JSON-LD, address, phone |
 | `npm run lint` | oxlint |
-| `npm run design:lint` | Validates `DESIGN.md` tokens and contrast |
+| `npm run design:lint` | Validates the design tokens and contrast. Needs `DESIGN.md`, which is kept locally and not in this repo |
 
 ## Changing content
 
@@ -28,7 +28,7 @@ npm run dev
 
 **Words** live in [`src/locales/es.json`](src/locales/es.json) and [`src/locales/en.json`](src/locales/en.json). Both files must have the same keys; a test fails if they drift.
 
-**Look** is documented in [`DESIGN.md`](DESIGN.md) and implemented as tokens in [`src/styles/theme.css`](src/styles/theme.css). Change the tokens, not the components.
+**Look** is implemented as tokens in [`src/styles/theme.css`](src/styles/theme.css), the only place colors, fonts, radii and spacing are defined. Change the tokens, not the components. The written design system (`DESIGN.md`) and the product record (`PRODUCT.md`) are kept on disk and deliberately not published here.
 
 Three rules the tests enforce:
 
