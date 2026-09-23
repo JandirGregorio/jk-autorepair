@@ -223,6 +223,8 @@
     "english": "Ver el sitio en inglés"
   },
   "footer": {
-    "tagline": "Taller mecánico en Hamilton Township, NJ"
+    "tagline": "Taller mecánico en Hamilton Township, NJ",
+    "copyright": "© {{year}} JK Auto Repair. Todos los derechos reservados.",
+    "photoCredit": "Fotos tomadas en el taller."
   }
 }

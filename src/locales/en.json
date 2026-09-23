@@ -223,6 +223,8 @@
     "english": "Ver el sitio en español"
   },
   "footer": {
-    "tagline": "Auto repair in Hamilton Township, NJ"
+    "tagline": "Auto repair in Hamilton Township, NJ",
+    "copyright": "© {{year}} JK Auto Repair. All rights reserved.",
+    "photoCredit": "Photographs taken at the shop."
   }
 }

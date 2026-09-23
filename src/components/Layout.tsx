@@ -79,12 +79,6 @@ function Footer() {
           <p className="text-sm font-medium uppercase tracking-[0.22em]">{business.name}</p>
           <p className="mt-3 text-sm text-fog">{t('footer.tagline')}</p>
           <p className="mt-2 text-sm text-fog">{t('contact.spanishSpoken')}</p>
-          <Link
-            to={pathFor('legal', language)}
-            className="mt-4 inline-block text-sm text-fog no-underline hover:text-canvas"
-          >
-            {t('nav.legal')}
-          </Link>
         </div>
 
         <div>
@@ -114,14 +108,44 @@ function Footer() {
           </dl>
         </div>
       </div>
+
+      {/* The small print, under a hairline: ownership of the site and its
+          photographs, and the way to the notices that explain both. */}
+      <div className="border-t border-line-dark">
+        <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-6 py-6 text-sm text-fog sm:flex-row sm:justify-between">
+          <p className="text-center tabular-nums sm:text-left">
+            {t('footer.copyright', { year: business.copyrightYear })}
+          </p>
+          <div className="flex items-center gap-6">
+            <span className="hidden sm:inline">{t('footer.photoCredit')}</span>
+            <Link
+              to={pathFor('legal', language)}
+              className="no-underline hover:text-canvas"
+            >
+              {t('nav.legal')}
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }
 
+/**
+ * The sticky call bar, on phones only.
+ *
+ * It is an <aside> rather than a <div> so it lands in the landmark list. It
+ * is fixed to the bottom of the screen, outside the header, main and footer,
+ * and a screen reader user navigating by landmark would otherwise walk right
+ * past the fastest way to reach the shop.
+ */
 function MobileCallBar() {
   const { t } = useTranslation()
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line-dark bg-ink sm:hidden">
+    <aside
+      aria-label={t('actions.call')}
+      className="fixed inset-x-0 bottom-0 z-40 border-t border-line-dark bg-ink sm:hidden"
+    >
       <a
         href={business.phone.href}
         className="flex items-center justify-center gap-2 px-4 py-3.5 text-sm text-canvas no-underline"
@@ -129,6 +153,6 @@ function MobileCallBar() {
         {t('actions.call')}
         <span className="tabular-nums">{business.phone.display}</span>
       </a>
-    </div>
+    </aside>
   )
 }

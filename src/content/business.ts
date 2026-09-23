@@ -54,6 +54,18 @@ export const business = {
    */
   policiesUpdated: '2026-09-23',
 
+  /**
+   * The year this site was published, for the footer notice.
+   *
+   * A literal rather than new Date().getFullYear(): the pages are prerendered,
+   * so a computed year would be the build's year in the HTML and the visitor's
+   * year after hydration, which is a mismatch every New Year's Eve. It is also
+   * the better claim to make. Copyright runs from publication, not from
+   * whenever somebody happened to load the page, so this only moves when the
+   * site is meaningfully rewritten.
+   */
+  copyrightYear: 2026,
+
   /** Confirmed with the owner. Each one is true; none is a marketing claim. */
   policies: {
     walkIns: true,
