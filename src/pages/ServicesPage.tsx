@@ -7,7 +7,8 @@ import {
   MakesBand,
   ServiceBands,
 } from '../components/sections'
-import { Band, OpenStatus } from '../components/sign'
+import { Band, HeroImage, OpenStatus } from '../components/sign'
+import { heroPhoto } from '../content/photos'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 
 export default function ServicesPage() {
@@ -17,11 +18,17 @@ export default function ServicesPage() {
 
   return (
     <>
-      <section className="flex min-h-[55svh] flex-col items-center justify-center bg-ink px-6 py-28 text-center text-canvas">
-        <h1 className="text-4xl font-light sm:text-6xl">{t('services.title')}</h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-fog">{t('servicesPage.intro')}</p>
-        <div className="mt-8">
-          <OpenStatus language={language} tone="dark" />
+      {/* The same graded photograph as the home page, so arriving here reads as
+          the same shop rather than a different site. Shorter, because the
+          headline and the list under it are what this page is for. */}
+      <section className="relative flex min-h-[55svh] flex-col items-center justify-center overflow-hidden bg-ink px-6 py-28 text-center text-canvas">
+        {heroPhoto && <HeroImage photo={heroPhoto} />}
+        <div className="relative flex flex-col items-center">
+          <h1 className="text-4xl font-light sm:text-6xl">{t('services.title')}</h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-fog">{t('servicesPage.intro')}</p>
+          <div className="mt-8">
+            <OpenStatus language={language} tone="dark" />
+          </div>
         </div>
       </section>
 
