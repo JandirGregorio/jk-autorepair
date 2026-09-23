@@ -4,6 +4,7 @@
  * lines in gray, and pill actions. No cards, no borders, no color.
  */
 
+import { useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { business, cityLine, fullAddress, streetLine } from '../content/business'
@@ -140,15 +141,40 @@ export function HoursLocationBand() {
 }
 
 /**
- * The shop's own photographs, or labelled frames while none exist.
+ * The shop's own photographs, as a carousel.
  *
- * The first image runs full width because this grammar leans on one large
- * picture; the rest pair up beneath it.
+ * Scroll-snap does the work, so swiping is native and the thing still scrolls
+ * before React hydrates and with JavaScript off. The arrows and dots are
+ * enhancements on top of it, not the mechanism. Nothing auto-advances: a
+ * visitor reading about brakes should not have the page move under them.
  */
-export function PhotoBand() {
+export function PhotoCarousel() {
   const { t } = useTranslation()
+  const trackRef = useRef<HTMLUListElement>(null)
+  const [active, setActive] = useState(0)
 
-  if (galleryPhotos.length === 0) {
+  const count = galleryPhotos.length
+
+  const scrollToIndex = (index: number) => {
+    const track = trackRef.current
+    if (!track) return
+    const slide = track.children[index] as HTMLElement | undefined
+    if (!slide) return
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    track.scrollTo({ left: slide.offsetLeft, behavior: reduced ? 'auto' : 'smooth' })
+  }
+
+  /** Which slide sits nearest the left edge, for the dots and the labels. */
+  const handleScroll = () => {
+    const track = trackRef.current
+    if (!track) return
+    const slide = track.children[0] as HTMLElement | undefined
+    if (!slide) return
+    const step = slide.getBoundingClientRect().width + 16
+    setActive(Math.min(count - 1, Math.max(0, Math.round(track.scrollLeft / step))))
+  }
+
+  if (count === 0) {
     return (
       <div className="grid gap-4 sm:grid-cols-2">
         <PhotoFrame />
@@ -157,40 +183,91 @@ export function PhotoBand() {
     )
   }
 
-  const [lead, ...rest] = galleryPhotos
-
   return (
-    <div className="grid gap-4">
-      <img
-        src={photoSrc(lead, 1600)}
-        srcSet={photoSrcSet(lead)}
-        sizes="(min-width: 640px) 1024px, 100vw"
-        width={lead.width}
-        height={lead.height}
-        alt={t(lead.altKey)}
-        loading="lazy"
-        decoding="async"
-        className="aspect-[16/9] w-full object-cover"
-      />
-      {rest.length > 0 && (
-        <div className="grid gap-4 sm:grid-cols-2">
-          {rest.map((photo) => (
+    <div className="relative">
+      <ul
+        ref={trackRef}
+        onScroll={handleScroll}
+        tabIndex={0}
+        aria-label={t('photos.title')}
+        className="no-scrollbar flex snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain"
+      >
+        {galleryPhotos.map((photo, index) => (
+          <li key={photo.name} className="w-[86%] shrink-0 snap-start sm:w-[68%]">
             <img
-              key={photo.name}
               src={photoSrc(photo, 800)}
               srcSet={photoSrcSet(photo)}
-              sizes="(min-width: 640px) 512px, 100vw"
+              sizes="(min-width: 640px) 700px, 86vw"
               width={photo.width}
               height={photo.height}
               alt={t(photo.altKey)}
-              loading="lazy"
+              loading={index === 0 ? 'eager' : 'lazy'}
               decoding="async"
-              className="aspect-[4/3] w-full object-cover"
+              className="aspect-[4/3] w-full object-cover sm:aspect-[16/10]"
+            />
+          </li>
+        ))}
+      </ul>
+
+      {/* Arrows are for pointers; touch already swipes, so they stay off phones. */}
+      <div className="mt-6 flex items-center justify-between">
+        {/* Clickable, so they are real buttons with real labels rather than
+            decoration everyone but a keyboard user can operate. */}
+        <div className="flex gap-2">
+          {galleryPhotos.map((photo, index) => (
+            <button
+              key={photo.name}
+              type="button"
+              onClick={() => scrollToIndex(index)}
+              aria-label={t('photos.goTo', { index: index + 1 })}
+              aria-current={index === active ? 'true' : undefined}
+              className={`h-1.5 w-6 transition-colors duration-200 ${
+                index === active ? 'bg-ink' : 'bg-line hover:bg-smoke'
+              }`}
             />
           ))}
         </div>
-      )}
+
+        <div className="flex items-center gap-3">
+          <span className="text-sm tabular-nums text-smoke">
+            {t('photos.position', { index: active + 1, total: count })}
+          </span>
+          <button
+            type="button"
+            onClick={() => scrollToIndex(Math.max(0, active - 1))}
+            disabled={active === 0}
+            aria-label={t('photos.previous')}
+            className="hidden h-10 w-10 items-center justify-center rounded-pill border border-line transition-colors duration-200 hover:border-ink disabled:opacity-30 sm:inline-flex"
+          >
+            <Chevron direction="left" />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollToIndex(Math.min(count - 1, active + 1))}
+            disabled={active === count - 1}
+            aria-label={t('photos.next')}
+            className="hidden h-10 w-10 items-center justify-center rounded-pill border border-line transition-colors duration-200 hover:border-ink disabled:opacity-30 sm:inline-flex"
+          >
+            <Chevron direction="right" />
+          </button>
+        </div>
+      </div>
     </div>
+  )
+}
+
+function Chevron({ direction }: { direction: 'left' | 'right' }) {
+  return (
+    <svg viewBox="0 0 16 16" aria-hidden="true" className="h-4 w-4">
+      <path
+        d={direction === 'left' ? 'M10 2 4 8l6 6' : 'M6 2l6 6-6 6'}
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
   )
 }
 

@@ -115,6 +115,10 @@
   "photos": {
     "title": "El taller",
     "pending": "Fotos del taller: próximamente",
+    "previous": "Foto anterior",
+    "next": "Foto siguiente",
+    "position": "{{index}} de {{total}}",
+    "goTo": "Ver la foto {{index}}",
     "alt": {
       "bayDoor": "La puerta del taller abierta en la East State Street",
       "lift": "Una camioneta en el elevador durante una reparación de motor",

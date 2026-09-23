@@ -115,6 +115,10 @@
   "photos": {
     "title": "The shop",
     "pending": "Shop photos coming soon",
+    "previous": "Previous photo",
+    "next": "Next photo",
+    "position": "{{index}} of {{total}}",
+    "goTo": "Go to photo {{index}}",
     "alt": {
       "bayDoor": "The shop's open bay door on East State Street",
       "lift": "A truck on the lift during an engine repair",

@@ -56,6 +56,16 @@
     text-wrap: balance;
   }
 
+  /* The carousel shows its position with dots and a counter, so the native
+     scrollbar underneath it is noise. */
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

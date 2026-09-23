@@ -6,7 +6,7 @@ import {
   ClosingBand,
   HoursLocationBand,
   MakesBand,
-  PhotoBand,
+  PhotoCarousel,
   ReviewsBand,
   ServiceBands,
 } from '../components/sections'
@@ -91,10 +91,8 @@ export default function HomePage() {
         </div>
       </Band>
 
-      {/* Photographs carry this grammar, so the frames are large and honest
-          about being empty until the client sends real images. */}
       <Band muted>
-        <PhotoBand />
+        <PhotoCarousel />
       </Band>
 
       <Band tone="dark">
