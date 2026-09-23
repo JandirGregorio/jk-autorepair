@@ -33,10 +33,12 @@ export const heroPhoto: Photo | null = {
  * a 4:3 crop keeps the mechanical work centered.
  */
 export const galleryPhotos: Photo[] = [
-  { name: 'lift', width: 1600, height: 1200, altKey: 'photos.alt.lift' },
+  // Cropped above a customer's readable licence plate; see photos-source/.
+  { name: 'lift', width: 1600, height: 1060, altKey: 'photos.alt.lift' },
   { name: 'interior', width: 1600, height: 1200, altKey: 'photos.alt.interior' },
   { name: 'lot', width: 1600, height: 1200, altKey: 'photos.alt.lot' },
-  { name: 'engine', width: 1200, height: 1600, altKey: 'photos.alt.engine' },
+  // Same crop, tight on the engine itself.
+  { name: 'engine', width: 1200, height: 415, altKey: 'photos.alt.engine' },
   { name: 'block', width: 1200, height: 1600, altKey: 'photos.alt.block' },
 ]
 

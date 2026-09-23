@@ -155,14 +155,21 @@ export function PhotoCarousel() {
 
   const count = galleryPhotos.length
 
-  const scrollToIndex = (index: number) => {
+  /**
+   * Wrapping past either end jumps instead of gliding: animating back across
+   * every slide reads as a mistake, and it gets slower with each photo the
+   * client adds.
+   */
+  const scrollToIndex = (index: number, wrapped = false) => {
     const track = trackRef.current
     if (!track) return
     const slide = track.children[index] as HTMLElement | undefined
     if (!slide) return
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    track.scrollTo({ left: slide.offsetLeft, behavior: reduced ? 'auto' : 'smooth' })
+    track.scrollTo({ left: slide.offsetLeft, behavior: reduced || wrapped ? 'auto' : 'smooth' })
   }
+
+  const goTo = (index: number) => scrollToIndex((index + count) % count, index < 0 || index >= count)
 
   /** Which slide sits nearest the left edge, for the dots and the labels. */
   const handleScroll = () => {
@@ -232,21 +239,21 @@ export function PhotoCarousel() {
           <span className="text-sm tabular-nums text-smoke">
             {t('photos.position', { index: active + 1, total: count })}
           </span>
+          {/* Both arrows wrap, so the last photo leads back to the first and
+              the set stays circular however many the client adds. */}
           <button
             type="button"
-            onClick={() => scrollToIndex(Math.max(0, active - 1))}
-            disabled={active === 0}
+            onClick={() => goTo(active - 1)}
             aria-label={t('photos.previous')}
-            className="hidden h-10 w-10 items-center justify-center rounded-pill border border-line transition-colors duration-200 hover:border-ink disabled:opacity-30 sm:inline-flex"
+            className="hidden h-10 w-10 items-center justify-center rounded-pill border border-line transition-colors duration-200 hover:border-ink sm:inline-flex"
           >
             <Chevron direction="left" />
           </button>
           <button
             type="button"
-            onClick={() => scrollToIndex(Math.min(count - 1, active + 1))}
-            disabled={active === count - 1}
+            onClick={() => goTo(active + 1)}
             aria-label={t('photos.next')}
-            className="hidden h-10 w-10 items-center justify-center rounded-pill border border-line transition-colors duration-200 hover:border-ink disabled:opacity-30 sm:inline-flex"
+            className="hidden h-10 w-10 items-center justify-center rounded-pill border border-line transition-colors duration-200 hover:border-ink sm:inline-flex"
           >
             <Chevron direction="right" />
           </button>

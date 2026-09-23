@@ -29,8 +29,16 @@ out_dir="$(cd "$(dirname "$0")/.." && pwd)/public/photos"
 
 mkdir -p "$out_dir"
 
+# Never upscale: a cropped original can be shorter than the target, and
+# blowing it back up costs bytes and sharpness for nothing.
+long_side=$(
+  sips -g pixelWidth -g pixelHeight "$source_file" |
+    awk '/pixelWidth|pixelHeight/ { if ($2 > max) max = $2 } END { print max }'
+)
+
 for size in 1600 800; do
-  sips -Z "$size" \
+  target=$(( size > long_side ? long_side : size ))
+  sips -Z "$target" \
     --setProperty format jpeg \
     --setProperty formatOptions 72 \
     "$source_file" \
