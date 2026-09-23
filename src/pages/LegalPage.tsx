@@ -12,8 +12,16 @@
 
 import { useTranslation } from 'react-i18next'
 
-import { AddressBlock, Band, CallButton, DirectionsButton, Kicker } from '../components/sign'
+import {
+  AddressBlock,
+  Band,
+  CallButton,
+  DirectionsButton,
+  HeroImage,
+  Kicker,
+} from '../components/sign'
 import { business } from '../content/business'
+import { heroPhoto } from '../content/photos'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 import type { Language } from '../routes'
 
@@ -31,12 +39,18 @@ export default function LegalPage() {
 
   return (
     <>
-      <section className="flex flex-col items-center justify-center bg-ink px-6 pb-20 pt-36 text-center text-canvas sm:pb-24 sm:pt-40">
-        <h1 className="text-4xl font-light sm:text-5xl">{t('legal.title')}</h1>
-        <p className="mx-auto mt-6 max-w-xl text-lg text-fog">{t('legal.intro')}</p>
-        <p className="mt-8 text-sm tabular-nums text-fog">
-          {t('legal.updated', { date: formatUpdated(business.policiesUpdated, language) })}
-        </p>
+      {/* The same graded photograph the other two pages open on. A legal page
+          that drops the shop's own front door reads like somebody else's
+          boilerplate pasted in, which is the opposite of what it is. */}
+      <section className="relative flex flex-col items-center justify-center overflow-hidden bg-ink px-6 pb-20 pt-36 text-center text-canvas sm:pb-24 sm:pt-40">
+        {heroPhoto && <HeroImage photo={heroPhoto} />}
+        <div className="relative flex flex-col items-center">
+          <h1 className="text-4xl font-light sm:text-5xl">{t('legal.title')}</h1>
+          <p className="mx-auto mt-6 max-w-xl text-lg text-fog">{t('legal.intro')}</p>
+          <p className="mt-8 text-sm tabular-nums text-fog">
+            {t('legal.updated', { date: formatUpdated(business.policiesUpdated, language) })}
+          </p>
+        </div>
       </section>
 
       {notices.map((notice, index) => (
