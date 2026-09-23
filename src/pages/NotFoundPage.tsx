@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
-import { AddressBlock, ArrowGlyph, CallButton } from '../components/sign'
+import { CallButton } from '../components/sign'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 import { hrefFor } from '../hrefs'
 import { pathFor } from '../routes'
@@ -15,21 +15,18 @@ export default function NotFoundPage() {
   useDocumentHead(t('notFound.title'), language)
 
   return (
-    <div className="mx-auto max-w-3xl px-4 pt-16 sm:px-6">
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-5xl">
-        {t('notFound.title')}
-      </h1>
-      <p className="mt-4 text-lg leading-relaxed">{t('notFound.body')}</p>
+    <section className="flex min-h-svh flex-col items-center justify-center bg-ink px-6 py-32 text-center text-canvas">
+      <h1 className="text-4xl font-light sm:text-5xl">{t('notFound.title')}</h1>
+      <p className="mx-auto mt-6 max-w-lg text-lg text-fog">{t('notFound.body')}</p>
 
-      <div className="mt-7 flex flex-wrap items-center gap-6">
-        <CallButton size="loud" />
+      <div className="mt-10 flex flex-wrap justify-center gap-4">
+        <CallButton tone="dark" />
         {/* A real link, not a router link: 404.html can be served at any path. */}
         <a
           href={hrefFor(pathFor('home', language))}
-          className="group inline-flex items-center gap-2 font-display text-sm font-semibold text-oxblood no-underline"
+          className="inline-flex items-center justify-center rounded-pill border border-line-dark px-8 py-3.5 text-sm font-medium no-underline transition-colors duration-200 hover:border-canvas"
         >
           {t('notFound.home')}
-          <ArrowGlyph />
         </a>
       </div>
 
@@ -37,14 +34,10 @@ export default function NotFoundPage() {
         href={hrefFor(pathFor('home', other))}
         lang={other}
         hrefLang={other}
-        className="mt-4 inline-block font-form text-xs uppercase tracking-[0.14em] text-slate"
+        className="mt-8 text-sm text-fog"
       >
         {t('notFound.english')}
       </a>
-
-      <div className="mt-12">
-        <AddressBlock />
-      </div>
-    </div>
+    </section>
   )
 }

@@ -1,156 +1,142 @@
 ---
 version: alpha
-name: The Service Record
-description: The shop's work order, printed on the paper it lives on. Oat paper ground, graphite ink, hairline rules, tabular figures, and one oxblood accent spent only on the phone. The arrangement is the familiar auto-shop one; the materials are not.
+name: Service Minimal
+description: The grammar the large service brands use, applied to a neighborhood shop. Near-black and white full-bleed bands alternating, one family at light weights, pill actions, hairlines, and no accent color at all.
 colors:
-  primary: "#23262b"
-  secondary: "#5c6168"
-  tertiary: "#7a1f1f"
-  tertiary-deep: "#5e1616"
-  neutral: "#f2efe6"
-  leaf: "#fbf9f4"
-  carbon: "#e8e3d5"
-  rule: "#cfc9bb"
-  rule-strong: "#a8a294"
+  primary: "#0c0c0d"
+  neutral: "#ffffff"
+  muted: "#f4f4f5"
+  secondary: "#6b6b70"
+  secondary-dark: "#b4b4b8"
+  line: "#e3e3e5"
+  line-dark: "#2a2a2d"
 typography:
   display-xl:
-    fontFamily: Bricolage Grotesque
-    fontSize: 60px
-    fontWeight: 700
-    lineHeight: 1.02
+    fontFamily: Manrope
+    fontSize: 72px
+    fontWeight: 300
+    lineHeight: 1.05
     letterSpacing: -0.02em
   display-lg:
-    fontFamily: Bricolage Grotesque
-    fontSize: 36px
-    fontWeight: 700
-    lineHeight: 1.05
-    letterSpacing: -0.01em
+    fontFamily: Manrope
+    fontSize: 40px
+    fontWeight: 300
+    lineHeight: 1.1
+    letterSpacing: -0.02em
   heading-md:
-    fontFamily: Bricolage Grotesque
+    fontFamily: Manrope
     fontSize: 24px
-    fontWeight: 600
-    lineHeight: 1.15
+    fontWeight: 300
+    lineHeight: 1.2
   body-lg:
-    fontFamily: Archivo
+    fontFamily: Manrope
     fontSize: 19px
     fontWeight: 400
     lineHeight: 1.6
   body-md:
-    fontFamily: Archivo
-    fontSize: 17px
+    fontFamily: Manrope
+    fontSize: 16px
     fontWeight: 400
     lineHeight: 1.6
-  form-md:
-    fontFamily: Courier Prime
-    fontSize: 15px
-    fontWeight: 400
-    lineHeight: 1.5
-    fontFeature: "tnum"
-  form-label:
-    fontFamily: Courier Prime
+  label:
+    fontFamily: Manrope
     fontSize: 11px
-    fontWeight: 400
-    letterSpacing: 0.18em
+    fontWeight: 500
+    letterSpacing: 0.22em
 rounded:
-  sm: 3px
+  sm: 4px
+  full: 999px
 spacing:
-  xs: 4px
-  sm: 8px
-  md: 20px
-  lg: 40px
-  xl: 64px
+  xs: 8px
+  sm: 16px
+  md: 32px
+  lg: 56px
+  xl: 112px
 components:
   page:
     backgroundColor: "{colors.neutral}"
     textColor: "{colors.primary}"
     typography: "{typography.body-md}"
-  leaf-panel:
-    backgroundColor: "{colors.leaf}"
+  band-dark:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.neutral}"
+    typography: "{typography.body-md}"
+  band-muted:
+    backgroundColor: "{colors.muted}"
     textColor: "{colors.primary}"
-    rounded: "{rounded.sm}"
-    padding: "{spacing.md}"
-  photo-slot:
-    backgroundColor: "{colors.carbon}"
+  text-secondary:
+    backgroundColor: "{colors.neutral}"
     textColor: "{colors.secondary}"
-    typography: "{typography.form-label}"
-    rounded: "{rounded.sm}"
-  rule-hairline:
-    backgroundColor: "{colors.rule}"
+  text-secondary-dark:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.secondary-dark}"
+  button-primary:
+    backgroundColor: "{colors.primary}"
+    textColor: "{colors.neutral}"
+    rounded: "{rounded.full}"
+    typography: "{typography.body-md}"
+  button-primary-dark:
+    backgroundColor: "{colors.neutral}"
+    textColor: "{colors.primary}"
+    rounded: "{rounded.full}"
+  rule:
+    backgroundColor: "{colors.line}"
     height: "1px"
-  rule-emphasis:
-    backgroundColor: "{colors.rule-strong}"
+  rule-dark:
+    backgroundColor: "{colors.line-dark}"
     height: "1px"
-  button-call:
-    backgroundColor: "{colors.tertiary}"
-    textColor: "{colors.neutral}"
-    typography: "{typography.display-lg}"
-    rounded: "{rounded.sm}"
-  button-call-hover:
-    backgroundColor: "{colors.tertiary-deep}"
-    textColor: "{colors.neutral}"
-  call-bar-mobile:
-    backgroundColor: "{colors.tertiary}"
-    textColor: "{colors.neutral}"
-    typography: "{typography.form-md}"
 ---
 
-# The Service Record
+# Service Minimal
 
 ## Overview
 
-The site is JK Auto Repair's service record: the work order a mechanic fills in, printed on the paper it lives on. The client asked for the arrangement customers already expect from an auto shop site, so the structure is conventional on purpose: a hero, service groups, reviews, makes, areas served, hours and map, and a closing call. The distinction comes from material and restraint rather than from an unusual layout.
+This is the visual grammar the large service brands run on, applied honestly to a one-man shop in Hamilton Township. The page is a stack of full-bleed bands that alternate near-black, white, and a pale gray. Each band holds one idea, centered, with a light-weight headline, a short gray supporting line, and at most two pill actions.
 
-The visitor is a driver with a misbehaving car, standing outdoors on a phone, often reading Spanish first. The craft bar is the local Mercer County shops this competes with, and the way to beat them is clarity, legibility and trust rather than polish, since there are no photographs yet to out-polish anyone with.
+The restraint is the identity. There is no accent color, no border treatment, no shadow, and no ornament, so the only things that can carry the page are typography, spacing, and eventually photography. It borrows the pattern language of large service brands, never their marks, names, or typefaces, and nothing on the page implies the shop is affiliated with any manufacturer.
 
 ## Colors
 
-One ground, one ink, one accent. Nothing else earns color.
+Two grounds and one gray, plus two hairlines.
 
-- **Neutral, oat paper (#f2efe6):** the page. Warm enough to read as paper, dull enough to stay quiet outdoors.
-- **Leaf (#fbf9f4):** the off-white panels laid on the paper: address block, hours, service groups.
-- **Carbon (#e8e3d5):** the carbon-copy tint, used for photo slots and any awaiting-content state.
-- **Primary, graphite (#23262b):** all body and heading text. Not pure black, which reads as screen rather than print.
-- **Secondary, slate (#5c6168):** labels, captions, and the trade line under the shop name.
-- **Rule (#cfc9bb) and rule-strong (#a8a294):** hairlines. A form is ruled, not boxed, so borders stay 1px.
-- **Tertiary, oxblood (#7a1f1f):** the phone, the primary button, and the few links that lead somewhere decisive. Because it appears nowhere else, oxblood always means "act".
+- **Primary, near-black (#0c0c0d):** the hero, the reviews band, the closing band, the footer, and the primary button.
+- **Neutral, white (#ffffff):** the content bands and the type on dark grounds.
+- **Muted, pale gray (#f4f4f5):** alternating bands and empty photo frames, so the rhythm reads without a rule.
+- **Secondary (#6b6b70) and secondary-dark (#b4b4b8):** supporting text on light and dark grounds.
+- **Line (#e3e3e5) and line-dark (#2a2a2d):** hairlines for the hours table and outlined buttons.
 
-Measured contrast: graphite on paper 13.9:1, graphite on leaf 14.8:1, slate on paper 6.1:1, oxblood on paper 8.2:1, paper on oxblood 8.2:1. Every pairing clears WCAG AA.
+Measured contrast: white on near-black 19.1:1, near-black on white 19.1:1, secondary on white 5.2:1, secondary-dark on near-black 7.4:1. Every pairing clears WCAG AA.
 
 ## Typography
 
-Three faces, each with one job.
+One family, Manrope, at 300 for every heading and 400 for text. A single family is part of the look: the large brands run one voice everywhere and let size and weight carry hierarchy.
 
-- **Bricolage Grotesque** sets headings and the shop name. It carries more personality than a neutral grotesque without raising its voice, which is what keeps the conventional arrangement from reading as a template.
-- **Archivo** sets body copy. It handles Spanish diacritics cleanly and stays legible in daylight.
-- **Courier Prime** sets everything a service record treats as a measurement: field labels, hours, the phone number, and the trust row. It is used for data, never as decoration for its own sake.
-
-Headings run tight, with balanced wrapping. Body runs at 1.6 and stays near 65 characters. Every figure uses tabular numerals so hours and phone numbers align down the column.
+Headings are light and tightly tracked at -0.02em, which is what keeps a 72px shop name from shouting. Supporting lines sit in gray at body size. Labels are 11px at 0.22em tracking, used sparingly. Phone numbers and hours use tabular numerals.
 
 ## Layout
 
-One centered column at 1152px maximum, on a familiar vertical rhythm: hero, services, about and mission, reviews, photos, makes, areas, hours and location, closing call. The hero splits three-to-two, with the shop name and phone on the left and the ruled address block plus the photo slot on the right.
+Everything is a full-bleed band with a 1024px content column and 112px of vertical padding on desktop, half that on a phone. The hero occupies 85% of the viewport height and is centered both ways.
 
-Spacing steps are 4, 8, 20, 40 and 64 pixels, with more space above a heading than below it. On a phone everything stacks, and a slim oxblood call bar pins to the bottom of the screen.
+Bands alternate white, pale gray, and near-black down the page: hero, one-line promise, services, about and mission, photography, reviews, makes, areas served, hours and location, closing call. Content inside a band is either centered or a simple two-column split.
 
 ## Elevation & Depth
 
-Paper does not cast hard shadows. Panels sit on the page with a 1px rule and one soft, low-contrast lift. There are no offset shadows, no glows, and no blur.
+None. There are no shadows and no raised surfaces. Separation comes from changing the ground color between bands, which is why the band rhythm matters more here than in a bordered design.
 
 ## Shapes
 
-Corners are 3px, barely rounded, closer to a cut sheet than a card. Rules are 1px hairlines. Awaiting-content frames use a 1px dashed rule so they read as a blank field on a form rather than as a broken image. The only drawn icon is a thin arrow at 1.5px stroke.
+Actions are pills. Everything else is square: photo frames, the map, and the hours rows, which are separated by 1px hairlines rather than boxes. Corner rounding elsewhere is 4px at most.
 
 ## Components
 
-- **Call button:** oxblood, paper text, label in the display face and the number in the typewriter face so it never wraps. It darkens on hover rather than moving.
-- **Open stamp:** a small ruled chip beside today's hours, oxblood when open, slate when closed. It renders only after load, from the shop's clock in America/New_York, so the prerendered HTML never claims a state it cannot know.
-- **Address block:** a leaf panel with ruled lines, the street on one line and "Suite C" on its own, because the building has units A, B and C and the Google Business Profile is registered with Suite C.
-- **Service groups:** leaf panels, each item on its own ruled row.
-- **Photo slot:** a carbon frame at 4:3 with a dashed rule and a label saying photos are coming. Dropping in real images is a content change, not a layout change.
-- **Mobile call bar:** fixed to the bottom under 640px, oxblood, the number always one tap away.
+- **Pill buttons:** filled and outlined, in a light and a dark variant since they appear on both grounds. They change color on hover rather than moving.
+- **Open status:** a plain line beside today's hours rather than a badge. It renders only after load, from the shop's clock in America/New_York, so the prerendered HTML never claims a state it cannot know.
+- **Address block:** the street on one line and "Suite C" on its own, because the building has units A, B and C and the Google Business Profile is registered with Suite C.
+- **Photo frames:** 16:9, pale gray, labelled as awaiting real photographs. This grammar leans on photography more than any other direction considered, so these frames are the largest open question in the design.
+- **Mobile call bar:** fixed to the bottom under 640px, near-black, the number always one tap away.
 
 ## Do's and Don'ts
 
-Do keep oxblood for the phone and the primary action alone. Do set every figure in tabular numerals. Do let hairlines carry structure instead of heavy borders or shadows. Do write Spanish as Spanish rather than as a translation of the English.
+Do let whitespace do the work. Do keep one family and one weight for headings. Do alternate band grounds to create rhythm. Do write Spanish as Spanish rather than as a translation of the English.
 
-Don't add a second accent color. Don't introduce gradients, glass, gradient text, or hard offset shadows. Don't put a kicker or eyebrow above a heading. Don't fill the photo slot with stock photography or a texture standing in for a picture. Don't show a star rating, a review count, or a testimonial: the shop has six Google reviews and none on file, so the site links to the real ones instead.
+Don't introduce an accent color, a shadow, a gradient, or a card. Don't add a second typeface. Don't imitate any manufacturer's wordmark, badge, or typeface, or suggest the shop is an authorized service center for a brand it has no relationship with. Don't fill the photo frames with stock photography. Don't show a star rating, a review count, or a testimonial: the shop has six Google reviews and none on file, so the site links to the real ones instead.

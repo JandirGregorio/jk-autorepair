@@ -1,9 +1,9 @@
 /**
- * Service-record primitives.
+ * Service Minimal primitives.
  *
- * The page is the shop's work order: oat paper, graphite ink, hairline rules,
- * and one oxblood accent spent only on the phone. Panels are off-white leaves
- * laid on the paper, lifted by one soft shadow rather than a hard offset.
+ * Pill actions, hairline rules, one family at light weights, no accent color.
+ * Every primitive comes in a light and a dark variant because the page
+ * alternates full-bleed bands.
  */
 
 import { useSyncExternalStore, type ReactNode } from 'react'
@@ -13,95 +13,85 @@ import { business, cityLine, isOpenAt } from '../content/business'
 import { formatRange, todayRange } from '../content/hours'
 import type { Language } from '../routes'
 
-type LeafProps = {
-  children: ReactNode
-  className?: string
-}
+type Tone = 'light' | 'dark'
 
-/** An off-white leaf laid on the paper. */
-export function RecordLeaf({ children, className = '' }: LeafProps) {
+/** A full-bleed band. The page is a stack of these. */
+export function Band({
+  children,
+  tone = 'light',
+  muted = false,
+  className = '',
+}: {
+  children: ReactNode
+  tone?: Tone
+  muted?: boolean
+  className?: string
+}) {
+  const ground =
+    tone === 'dark' ? 'bg-ink text-canvas' : muted ? 'bg-mist text-ink' : 'bg-canvas text-ink'
   return (
-    <div className={`rounded-leaf border border-rule bg-leaf shadow-leaf ${className}`}>
-      {children}
-    </div>
+    <section className={`${ground} ${className}`}>
+      <div className="mx-auto w-full max-w-5xl px-6 py-20 sm:py-28">{children}</div>
+    </section>
   )
 }
 
-/** A small ruled label, the way a form names its fields. */
-export function FieldLabel({ children }: { children: ReactNode }) {
+/** Small letter-spaced label, the only ornament this world allows. */
+export function Kicker({ children, tone = 'light' }: { children: ReactNode; tone?: Tone }) {
   return (
-    <span className="font-form text-[0.7rem] uppercase tracking-[0.18em] text-slate">
+    <span
+      className={`text-[0.7rem] uppercase tracking-[0.22em] ${
+        tone === 'dark' ? 'text-fog' : 'text-smoke'
+      }`}
+    >
       {children}
     </span>
   )
 }
 
-/** A thin arrow that leans toward its destination on hover. */
-export function ArrowGlyph({ className = '' }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 28 12"
-      aria-hidden="true"
-      className={`h-3 w-7 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-focus-visible:translate-x-1 ${className}`}
-    >
-      <path
-        d="M0 6h24M19 1.5 24 6l-5 4.5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-export function CallButton({ size = 'normal' }: { size?: 'normal' | 'loud' }) {
+export function CallButton({ tone = 'light' }: { tone?: Tone }) {
   const { t } = useTranslation()
-  const loud = size === 'loud'
+  const filled =
+    tone === 'dark'
+      ? 'bg-canvas text-ink hover:bg-fog'
+      : 'bg-ink text-canvas hover:bg-smoke'
   return (
     <a
       href={business.phone.href}
-      className={`inline-flex items-center gap-3 rounded-leaf bg-oxblood text-paper no-underline transition-colors duration-150 hover:bg-oxblood-deep ${
-        loud ? 'px-6 py-4' : 'px-4 py-2.5'
-      }`}
+      className={`inline-flex items-center justify-center gap-2 rounded-pill px-8 py-3.5 text-sm font-medium no-underline transition-colors duration-200 ${filled}`}
     >
-      <span className={`font-display font-semibold ${loud ? 'text-lg' : 'text-sm'}`}>
-        {t('actions.call')}
-      </span>
-      {/* The number never wraps: it is the point of the button. */}
-      <span
-        className={`whitespace-nowrap font-form tabular-nums ${loud ? 'text-2xl sm:text-3xl' : 'text-base'}`}
-      >
-        {business.phone.display}
-      </span>
+      {t('actions.call')}
+      <span className="tabular-nums">{business.phone.display}</span>
     </a>
   )
 }
 
-export function DirectionsLink({ className = '' }: { className?: string }) {
+export function DirectionsButton({ tone = 'light' }: { tone?: Tone }) {
   const { t } = useTranslation()
+  const outlined =
+    tone === 'dark'
+      ? 'border-line-dark text-canvas hover:border-canvas'
+      : 'border-line text-ink hover:border-ink'
   return (
     <a
       href={business.links.directions}
       target="_blank"
       rel="noreferrer"
-      className={`group inline-flex items-center gap-2 font-display text-sm font-semibold text-oxblood ${className}`}
+      className={`inline-flex items-center justify-center rounded-pill border px-8 py-3.5 text-sm font-medium no-underline transition-colors duration-200 ${outlined}`}
     >
       {t('actions.directions')}
-      <ArrowGlyph />
     </a>
   )
 }
 
 /**
- * The open/closed stamp.
+ * The open/closed line.
  *
  * It reads the shop's clock, not the visitor's, and only after hydration: the
- * prerendered HTML cannot know what time it is, and painting a guess would
+ * prerendered HTML cannot know what time it is, and printing a guess would
  * either lie or break hydration.
  */
-export function OpenStamp({ language }: { language: Language }) {
+export function OpenStatus({ language, tone = 'light' }: { language: Language; tone?: Tone }) {
   const { t } = useTranslation()
   const minute = useSyncExternalStore(subscribeToMinute, currentMinute, noMinuteOnServer)
 
@@ -110,17 +100,15 @@ export function OpenStamp({ language }: { language: Language }) {
   const now = new Date(minute * 60_000)
   const open = isOpenAt(now)
   const today = todayRange(now)
+  const muted = tone === 'dark' ? 'text-fog' : 'text-smoke'
 
   return (
-    <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
-      <span
-        className={`rounded-leaf border px-2 py-1 font-form text-[0.7rem] uppercase tracking-[0.14em] ${
-          open ? 'border-oxblood text-oxblood' : 'border-rule-strong text-slate'
-        }`}
-      >
+    <p className={`flex flex-wrap items-center justify-center gap-x-2 text-sm ${muted}`}>
+      <span className={tone === 'dark' ? 'text-canvas' : 'text-ink'}>
         {open ? t('hours.openNow') : t('hours.closedNow')}
       </span>
-      <span className="font-form text-sm tabular-nums text-slate">
+      <span aria-hidden="true">·</span>
+      <span className="tabular-nums">
         {today
           ? t('hero.hoursToday', { hours: formatRange(today, language) })
           : `${t('hours.sunday')}: ${t('hours.closed')}`}
@@ -150,39 +138,35 @@ function noMinuteOnServer(): null {
 }
 
 /**
- * The address, ruled like a filled-in form field.
+ * The address.
  *
- * "Suite C" sits on its own ruled line at the same weight as the street: the
- * building has units A, B and C, and the Google Business Profile is registered
- * with Suite C. Anything else costs the shop its local ranking.
+ * "Suite C" sits on its own line: the building has units A, B and C, and the
+ * Google Business Profile is registered with Suite C. Anything else costs the
+ * shop its local ranking.
  */
-export function AddressBlock({ className = '' }: { className?: string }) {
+export function AddressBlock({ tone = 'light' }: { tone?: Tone }) {
   const { t } = useTranslation()
+  const muted = tone === 'dark' ? 'text-fog' : 'text-smoke'
   return (
-    <RecordLeaf className={`p-5 ${className}`}>
-      <FieldLabel>{t('contact.addressLabel')}</FieldLabel>
-      <address className="mt-3 not-italic">
-        <span className="block border-b border-rule pb-1 font-display text-xl font-semibold">
-          {business.address.street}
-        </span>
-        <span className="block border-b border-rule py-1 font-display text-xl font-semibold">
-          {business.address.unit}
-        </span>
-        <span className="block pt-1 font-form text-base tabular-nums text-slate">{cityLine()}</span>
+    <div>
+      <Kicker tone={tone}>{t('contact.addressLabel')}</Kicker>
+      <address className="mt-4 text-xl font-light not-italic leading-snug">
+        <span className="block">{business.address.street}</span>
+        <span className="block">{business.address.unit}</span>
+        <span className={`mt-1 block text-base tabular-nums ${muted}`}>{cityLine()}</span>
       </address>
-      <DirectionsLink className="mt-3" />
-    </RecordLeaf>
+    </div>
   )
 }
 
-/** Stated plainly, in the form's own voice. */
-export function SpanishNote({ className = '' }: { className?: string }) {
+/** A full-bleed frame waiting for a real photograph. */
+export function PhotoFrame({ className = '' }: { className?: string }) {
   const { t } = useTranslation()
   return (
-    <span
-      className={`inline-block rounded-leaf border border-rule-strong px-2 py-1 font-form text-[0.7rem] uppercase tracking-[0.14em] text-graphite ${className}`}
+    <div
+      className={`flex aspect-[16/9] w-full items-center justify-center bg-mist ${className}`}
     >
-      {t('contact.spanishSpoken')}
-    </span>
+      <Kicker>{t('photos.pending')}</Kicker>
+    </div>
   )
 }

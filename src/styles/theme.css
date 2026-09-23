@@ -1,43 +1,28 @@
 /**
- * The Service Record: the shop's work order, printed on the paper it lives on.
+ * Service Minimal: the grammar the big service brands use.
  *
- * DESIGN.md documents this system in prose; this file is what the components
- * read. One accent, spent only on the phone and the primary action.
+ * Near-black and white full-bleed bands alternating, one family at light
+ * weights, pill actions, hairlines instead of borders, and no accent color at
+ * all. Restraint is the whole identity, so nothing here shouts.
  *
  * Contrast, measured against the ground each color sits on:
- *   graphite on paper        13.9:1
- *   slate on paper            6.1:1
- *   oxblood on paper          8.2:1
- *   paper on oxblood          8.2:1
- *   graphite on leaf         14.8:1
+ *   canvas on ink      19.1:1
+ *   ink on canvas      19.1:1
+ *   smoke on canvas     5.2:1
+ *   fog on ink          7.4:1
  */
 
 @theme {
-  /* Grounds */
-  --color-paper: #f2efe6;
-  --color-leaf: #fbf9f4;
-  --color-carbon: #e8e3d5;
+  --color-ink: #0c0c0d;
+  --color-canvas: #ffffff;
+  --color-mist: #f4f4f5;
+  --color-smoke: #6b6b70;
+  --color-fog: #b4b4b8;
+  --color-line: #e3e3e5;
+  --color-line-dark: #2a2a2d;
 
-  /* Ink */
-  --color-graphite: #23262b;
-  --color-slate: #5c6168;
+  --font-sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* Ruling. Hairlines, because a form is ruled, not bordered. */
-  --color-rule: #cfc9bb;
-  --color-rule-strong: #a8a294;
-
-  /* The single accent. Phone and primary action only. */
-  --color-oxblood: #7a1f1f;
-  --color-oxblood-deep: #5e1616;
-
-  --font-display: 'Bricolage Grotesque', Georgia, system-ui, sans-serif;
-  --font-body: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  /* Typewriter face for labels, codes, hours and phone numbers: the parts of
-     a service record that are measurements rather than prose. */
-  --font-form: 'Courier Prime', 'Courier New', ui-monospace, monospace;
-
-  --radius-leaf: 3px;
-
-  /* Paper does not cast hard shadows. One soft lift, for the leaf on paper. */
-  --shadow-leaf: 0 1px 2px rgb(35 38 43 / 0.06), 0 8px 24px -16px rgb(35 38 43 / 0.25);
+  --radius-pill: 999px;
+  --radius-panel: 4px;
 }

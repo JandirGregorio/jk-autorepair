@@ -1,29 +1,25 @@
 @import 'tailwindcss';
 
 /* Self-hosted: Google's CDN would block first paint on a phone signal. */
-@import '@fontsource/bricolage-grotesque/400.css';
-@import '@fontsource/bricolage-grotesque/600.css';
-@import '@fontsource/bricolage-grotesque/700.css';
-@import '@fontsource/archivo/400.css';
-@import '@fontsource/archivo/500.css';
-@import '@fontsource/courier-prime/400.css';
-@import '@fontsource/courier-prime/700.css';
+@import '@fontsource/manrope/300.css';
+@import '@fontsource/manrope/400.css';
+@import '@fontsource/manrope/500.css';
+@import '@fontsource/manrope/600.css';
 
 @import './styles/theme.css';
 
 @layer base {
   html {
-    background-color: var(--color-paper);
-    /* Paper is paper. The world does not invert. */
+    background-color: var(--color-canvas);
     color-scheme: only light;
   }
 
   body {
     margin: 0;
-    background-color: var(--color-paper);
-    color: var(--color-graphite);
-    font-family: var(--font-body);
-    font-size: 1.0625rem;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
@@ -31,30 +27,32 @@
 
   /* Browser surfaces belong to the design, not to the browser. */
   ::selection {
-    background-color: var(--color-carbon);
-    color: var(--color-graphite);
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
   }
 
   :root {
-    caret-color: var(--color-oxblood);
-    scrollbar-color: var(--color-rule-strong) var(--color-paper);
+    caret-color: var(--color-ink);
+    scrollbar-color: var(--color-fog) var(--color-canvas);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-oxblood);
+    outline: 2px solid currentColor;
     outline-offset: 3px;
   }
 
   a {
     color: inherit;
     text-decoration-thickness: 1px;
-    text-underline-offset: 3px;
+    text-underline-offset: 4px;
   }
 
   h1,
   h2,
   h3 {
-    font-family: var(--font-display);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
     text-wrap: balance;
   }
 

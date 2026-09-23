@@ -1,13 +1,13 @@
 import { useTranslation } from 'react-i18next'
 
 import {
-  AreasServed,
-  ClosingCall,
-  HoursLocation,
-  MakesBoard,
-  ServiceBoards,
+  AreasBand,
+  ClosingBand,
+  HoursLocationBand,
+  MakesBand,
+  ServiceBands,
 } from '../components/sections'
-import { OpenStamp } from '../components/sign'
+import { Band, OpenStatus } from '../components/sign'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 
 export default function ServicesPage() {
@@ -16,25 +16,38 @@ export default function ServicesPage() {
   useDocumentHead(t('seo.services.title'), language)
 
   return (
-    <div className="mx-auto max-w-6xl px-4 pt-10 sm:px-6 sm:pt-16">
-      <h1 className="font-display text-3xl font-bold tracking-tight sm:text-5xl">
-        {t('services.title')}
-      </h1>
-      <p className="mt-4 max-w-prose text-lg leading-relaxed sm:text-xl">
-        {t('servicesPage.intro')}
-      </p>
-      <div className="mt-5">
-        <OpenStamp language={language} />
-      </div>
+    <>
+      <section className="flex min-h-[55svh] flex-col items-center justify-center bg-ink px-6 py-28 text-center text-canvas">
+        <h1 className="text-4xl font-light sm:text-6xl">{t('services.title')}</h1>
+        <p className="mx-auto mt-6 max-w-xl text-lg text-fog">{t('servicesPage.intro')}</p>
+        <div className="mt-8">
+          <OpenStatus language={language} tone="dark" />
+        </div>
+      </section>
 
-      <div className="mt-10">
-        <ServiceBoards />
-      </div>
+      <Band>
+        <ServiceBands />
+      </Band>
 
-      <MakesBoard />
-      <AreasServed />
-      <HoursLocation />
-      <ClosingCall />
-    </div>
+      <Band muted>
+        <div className="text-center">
+          <MakesBand />
+        </div>
+      </Band>
+
+      <Band>
+        <div className="text-center">
+          <AreasBand />
+        </div>
+      </Band>
+
+      <Band muted>
+        <HoursLocationBand />
+      </Band>
+
+      <Band tone="dark">
+        <ClosingBand />
+      </Band>
+    </>
   )
 }
