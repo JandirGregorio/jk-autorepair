@@ -36,6 +36,8 @@ export const galleryPhotos: Photo[] = [
   // Cropped above a customer's readable licence plate; see photos-source/.
   { name: 'lift', width: 1600, height: 1060, altKey: 'photos.alt.lift' },
   { name: 'interior', width: 1600, height: 1200, altKey: 'photos.alt.interior' },
+  // A plate sat mid-frame here, too central to crop, so it is blurred out.
+  // See scripts/redact-region.swift and photos-source/lot-redacted.jpg.
   { name: 'lot', width: 1600, height: 1200, altKey: 'photos.alt.lot' },
   // Same crop, tight on the engine itself.
   { name: 'engine', width: 1200, height: 415, altKey: 'photos.alt.engine' },
