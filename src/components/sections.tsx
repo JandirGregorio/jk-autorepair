@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import { business, cityLine, fullAddress, streetLine } from '../content/business'
 import { formatRange, saturdayRange, weekdayRange } from '../content/hours'
+import { galleryPhotos, photoSrc, photoSrcSet } from '../content/photos'
 import { useRouteInfo } from '../hooks/useRoute'
 import { AddressBlock, CallButton, DirectionsButton, Kicker, PhotoFrame } from './sign'
 
@@ -138,11 +139,57 @@ export function HoursLocationBand() {
   )
 }
 
+/**
+ * The shop's own photographs, or labelled frames while none exist.
+ *
+ * The first image runs full width because this grammar leans on one large
+ * picture; the rest pair up beneath it.
+ */
 export function PhotoBand() {
+  const { t } = useTranslation()
+
+  if (galleryPhotos.length === 0) {
+    return (
+      <div className="grid gap-4 sm:grid-cols-2">
+        <PhotoFrame />
+        <PhotoFrame />
+      </div>
+    )
+  }
+
+  const [lead, ...rest] = galleryPhotos
+
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
-      <PhotoFrame />
-      <PhotoFrame />
+    <div className="grid gap-4">
+      <img
+        src={photoSrc(lead, 1600)}
+        srcSet={photoSrcSet(lead)}
+        sizes="(min-width: 640px) 1024px, 100vw"
+        width={lead.width}
+        height={lead.height}
+        alt={t(lead.altKey)}
+        loading="lazy"
+        decoding="async"
+        className="aspect-[16/9] w-full object-cover"
+      />
+      {rest.length > 0 && (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {rest.map((photo) => (
+            <img
+              key={photo.name}
+              src={photoSrc(photo, 800)}
+              srcSet={photoSrcSet(photo)}
+              sizes="(min-width: 640px) 512px, 100vw"
+              width={photo.width}
+              height={photo.height}
+              alt={t(photo.altKey)}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/3] w-full object-cover"
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }

@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 
 import { business, cityLine, isOpenAt } from '../content/business'
 import { formatRange, todayRange } from '../content/hours'
+import { photoSrc, photoSrcSet, type Photo } from '../content/photos'
 import type { Language } from '../routes'
 
 type Tone = 'light' | 'dark'
@@ -167,6 +168,43 @@ export function PhotoFrame({ className = '' }: { className?: string }) {
       className={`flex aspect-[16/9] w-full items-center justify-center bg-mist ${className}`}
     >
       <Kicker>{t('photos.pending')}</Kicker>
+    </div>
+  )
+}
+
+/**
+ * The hero photograph, graded to carry white type.
+ *
+ * Three layers, the way the big service pages do it: the image darkened and
+ * slightly desaturated, a vertical scrim that melts the bottom edge into the
+ * black band below, and a vignette that pulls the eye to the middle. Without
+ * all three, white text over a daylight photograph is unreadable.
+ */
+export function HeroImage({ photo }: { photo: Photo }) {
+  const { t } = useTranslation()
+  return (
+    <div aria-hidden={false} className="absolute inset-0 overflow-hidden">
+      <img
+        src={photoSrc(photo, 1600)}
+        srcSet={photoSrcSet(photo)}
+        sizes="100vw"
+        width={photo.width}
+        height={photo.height}
+        alt={t(photo.altKey)}
+        fetchPriority="high"
+        decoding="async"
+        className="h-full w-full object-cover [filter:brightness(0.55)_saturate(0.8)_contrast(1.05)]"
+      />
+      {/* Melts the photograph into the band above and below it. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,12,13,0.88)_0%,rgba(12,12,13,0.45)_38%,rgba(12,12,13,0.72)_78%,#0c0c0d_100%)]"
+      />
+      {/* Vignette. */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(12,12,13,0.75)_100%)]"
+      />
     </div>
   )
 }

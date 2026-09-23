@@ -37,3 +37,6 @@ dist-ssr
 # and CI workflows are kept on disk only.
 .claude/
 .github/
+
+# Photo originals, kept out of the repo (only the processed renditions ship)
+photos-source/

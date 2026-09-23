@@ -10,8 +10,16 @@ import {
   ReviewsBand,
   ServiceBands,
 } from '../components/sections'
-import { Band, CallButton, DirectionsButton, Kicker, OpenStatus } from '../components/sign'
+import {
+  Band,
+  CallButton,
+  DirectionsButton,
+  HeroImage,
+  Kicker,
+  OpenStatus,
+} from '../components/sign'
 import { business } from '../content/business'
+import { heroPhoto } from '../content/photos'
 import { useDocumentHead, useRouteInfo } from '../hooks/useRoute'
 import { pathFor } from '../routes'
 
@@ -22,8 +30,12 @@ export default function HomePage() {
 
   return (
     <>
-      {/* The opening band: name, trade, and the two things a stranger does. */}
-      <section className="flex min-h-[85svh] flex-col items-center justify-center bg-ink px-6 py-32 text-center text-canvas">
+      {/* The opening band: name, trade, and the two things a stranger does.
+          With a photograph it becomes the graded hero; without one it stays a
+          black field rather than borrowing somebody else's picture. */}
+      <section className="relative flex min-h-[85svh] flex-col items-center justify-center overflow-hidden bg-ink px-6 py-32 text-center text-canvas">
+        {heroPhoto && <HeroImage photo={heroPhoto} />}
+        <div className="relative flex flex-col items-center">
         <h1 className="text-5xl font-light sm:text-7xl">{business.name}</h1>
         <p className="mt-6 text-lg text-fog sm:text-xl">
           {t('hero.trade')} · {business.address.city}, {business.address.region}
@@ -44,6 +56,7 @@ export default function HomePage() {
           <li>{t('policies.walkIns')}</li>
           <li>{t('policies.freeEstimates')}</li>
         </ul>
+        </div>
       </section>
 
       <Band>

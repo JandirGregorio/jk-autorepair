@@ -114,7 +114,15 @@
   },
   "photos": {
     "title": "The shop",
-    "pending": "Shop photos coming soon"
+    "pending": "Shop photos coming soon",
+    "alt": {
+      "bayDoor": "The shop's open bay door on East State Street",
+      "lift": "A truck on the lift during an engine repair",
+      "interior": "Inside the shop, with vans being worked on",
+      "engine": "A truck engine opened up over the frame",
+      "lot": "The shop entrance seen from the street",
+      "block": "An engine block during a major repair"
+    }
   },
   "servicesPage": {
     "intro": "Here is what we do. If your problem is not on the list, call and ask."
