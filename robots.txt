@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jandirgregorio.github.io/jk-autorepair/sitemap.xml
