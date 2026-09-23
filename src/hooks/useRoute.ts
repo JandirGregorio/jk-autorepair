@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useLocation } from 'react-router'
+import { useLocation, useNavigationType } from 'react-router'
 
 import { languageOf, pageOf, type Language, type Page } from '../routes'
 
@@ -22,4 +22,23 @@ export function useDocumentHead(title: string, language: Language) {
     document.title = title
     document.documentElement.lang = language
   }, [title, language])
+}
+
+/**
+ * A new page starts at the top.
+ *
+ * Client-side navigation keeps the scroll position, so following a link from
+ * halfway down the home page dropped the visitor into the middle of the next
+ * one. Only PUSH and REPLACE scroll: on POP the browser is restoring a real
+ * position the visitor left, and the first render is a POP too, so a deep link
+ * or a reload stays where it landed.
+ */
+export function useScrollToTop() {
+  const { pathname } = useLocation()
+  const navigationType = useNavigationType()
+
+  useEffect(() => {
+    if (navigationType === 'POP') return
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
+  }, [pathname, navigationType])
 }

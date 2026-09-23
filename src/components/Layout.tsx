@@ -3,13 +3,14 @@ import { Link, Outlet } from 'react-router'
 
 import { business, cityLine, streetLine } from '../content/business'
 import { formatRange, saturdayRange, weekdayRange } from '../content/hours'
-import { useRouteInfo } from '../hooks/useRoute'
+import { useRouteInfo, useScrollToTop } from '../hooks/useRoute'
 import { hrefFor } from '../hrefs'
 import { alternatePath, pathFor } from '../routes'
 import { Kicker } from './sign'
 
 export function Layout() {
   const { t } = useTranslation()
+  useScrollToTop()
 
   return (
     <div className="min-h-svh bg-canvas pb-14 text-ink sm:pb-0">
