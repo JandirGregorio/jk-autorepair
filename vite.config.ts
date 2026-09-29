@@ -4,12 +4,13 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 /**
- * base is the one knob that changes when the custom domain arrives.
+ * base is the path the site is served from.
  *
- * GitHub Pages serves this repo at /jk-autorepair/ until a domain is attached.
- * Then set VITE_BASE=/ and VITE_SITE_URL=https://<domain> and add public/CNAME.
+ * Cloudflare Pages serves it from the root of jk-autorepair.pages.dev, so the
+ * default is /. A host that serves from a subpath needs VITE_BASE set to that
+ * path, and VITE_SITE_URL changes with it.
  */
-const base = process.env.VITE_BASE ?? '/jk-autorepair/'
+const base = process.env.VITE_BASE ?? '/'
 
 export default defineConfig({
   base,

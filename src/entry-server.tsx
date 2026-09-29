@@ -12,7 +12,7 @@ import { autoRepairSchema } from './seo/schema'
 
 const base = import.meta.env.BASE_URL
 const siteUrl = (
-  import.meta.env.VITE_SITE_URL ?? 'https://jandirgregorio.github.io/jk-autorepair'
+  import.meta.env.VITE_SITE_URL ?? 'https://jk-autorepair.pages.dev'
 ).replace(/\/$/, '')
 
 export type RenderResult = { html: string; head: string }

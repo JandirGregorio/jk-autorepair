@@ -10,7 +10,7 @@ export default function NotFoundPage() {
   const { language } = useRouteInfo()
   const other = language === 'es' ? 'en' : 'es'
 
-  // GitHub Pages serves one 404.html for every missing path, and it is in
+  // The host serves one 404.html for every missing path, and it is in
   // Spanish. When that path was an English one, correct the title after load.
   useDocumentHead(t('notFound.title'), language)
 

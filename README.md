@@ -16,7 +16,7 @@ npm run dev
 | --- | --- |
 | `npm run dev` | Vite dev server |
 | `npm run build` | Type-check, build the client, build the SSR bundle, then prerender every route |
-| `npm run preview` | Serve `dist/` exactly as GitHub Pages will |
+| `npm run preview` | Serve `dist/` locally, as it will be deployed |
 | `npm test` | Unit tests (routes, schema, copy rules) |
 | `npm run check-dist` | Reads the built HTML: language, canonical, hreflang, JSON-LD, address, phone, and that nothing calls a third party uninvited |
 | `npm run lint` | oxlint |
@@ -24,14 +24,15 @@ npm run dev
 
 ## Deploying
 
-Live at <https://jandirgregorio.github.io/jk-autorepair/>. There is no CI here, so nothing deploys on push. GitHub Pages serves the **`gh-pages`** branch, which holds the built output and nothing else.
+Hosted on Cloudflare Pages at <https://jk-autorepair.pages.dev/>. Cloudflare builds the `development` branch on every push; the build settings live in the Cloudflare dashboard, not in this repo.
 
-To publish a new build:
+| Setting | Value |
+| --- | --- |
+| Production branch | `development` |
+| Build command | `npm run build && npm run check-dist` |
+| Build output directory | `dist` |
+| `NODE_VERSION` | `22` |
 
-```bash
-npm run lint && npm test && npm run build && npm run check-dist
-```
+`check-dist` is part of the build on purpose: a page with a broken link, a missing canonical or a tracker fails the deploy instead of going live.
 
-Then copy `dist/` into a scratch directory, add an empty `.nojekyll` beside it, commit that directory as its own repo and force-push it to `gh-pages`. Build there rather than in the working tree: `dist/` is gitignored on `development` and should stay that way.
-
-`VITE_BASE=/jk-autorepair/` and `VITE_SITE_URL=https://jandirgregorio.github.io/jk-autorepair` are the defaults and are correct for this host. A custom domain changes both together, plus a `public/CNAME` file; canonical URLs, hreflang, the sitemap and robots.txt all follow from `VITE_SITE_URL`.
+`VITE_BASE` defaults to `/` and `VITE_SITE_URL` to `https://jk-autorepair.pages.dev`. When the shop gets its own domain, set `VITE_SITE_URL` to it in the Cloudflare dashboard and redeploy; canonical URLs, hreflang, the sitemap and robots.txt all follow from it.

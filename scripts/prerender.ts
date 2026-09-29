@@ -23,7 +23,7 @@ const dist = join(root, 'dist')
 
 /** Origin plus base path, no trailing slash. Both change with the domain. */
 const siteUrl = (
-  process.env.VITE_SITE_URL ?? 'https://jandirgregorio.github.io/jk-autorepair'
+  process.env.VITE_SITE_URL ?? 'https://jk-autorepair.pages.dev'
 ).replace(/\/$/, '')
 
 type RenderResult = { html: string; head: string }
@@ -42,7 +42,7 @@ async function main() {
     await writePage(route.path, fill(template, { html, head, language: route.language }))
   }
 
-  // GitHub Pages serves 404.html for anything it can't find. Spanish, since
+  // The host serves 404.html for anything it can't find. Spanish, since
   // that is the default language, and it links to both home pages.
   const notFound = renderNotFound(defaultLanguage)
   await writeFile(

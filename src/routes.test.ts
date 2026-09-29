@@ -20,7 +20,7 @@ describe('routes', () => {
     expect(allRoutes).toHaveLength(pages.length * languages.length)
   })
 
-  it('ends every path with a slash, which is how GitHub Pages serves directories', () => {
+  it('ends every path with a slash, which is how static hosts serve directories', () => {
     for (const route of allRoutes) {
       expect(route.path.endsWith('/')).toBe(true)
     }

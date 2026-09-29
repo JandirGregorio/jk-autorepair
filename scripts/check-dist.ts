@@ -18,10 +18,10 @@ import { allRoutes, defaultLanguage, languages, pathFor } from '../src/routes'
 
 const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist')
 const siteUrl = (
-  process.env.VITE_SITE_URL ?? 'https://jandirgregorio.github.io/jk-autorepair'
+  process.env.VITE_SITE_URL ?? 'https://jk-autorepair.pages.dev'
 ).replace(/\/$/, '')
 
-const base = process.env.VITE_BASE ?? '/jk-autorepair/'
+const base = process.env.VITE_BASE ?? '/'
 
 const failures: string[] = []
 
@@ -51,6 +51,10 @@ const trackerSignatures = [
   'hotjar',
   'clarity.ms',
   'segment.com/analytics',
+  // Cloudflare Web Analytics. The host offers it as a one-click toggle, so
+  // it is the tracker most likely to arrive here by accident.
+  'cloudflareinsights',
+  'beacon.min.js',
   'document.cookie',
 ]
 

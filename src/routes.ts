@@ -6,8 +6,8 @@
  * hreflang; nothing redirects by browser language, which would hide one
  * language from the crawler.
  *
- * Paths keep their trailing slash because GitHub Pages serves a directory's
- * index.html and redirects the slashless form to it.
+ * Paths keep their trailing slash because the site is a folder of index.html
+ * files, and static hosts serve a directory's index.html at the slashed URL.
  */
 
 export const languages = ['es', 'en'] as const
