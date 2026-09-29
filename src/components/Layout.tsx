@@ -8,6 +8,12 @@ import { hrefFor } from '../hrefs'
 import { alternatePath, pathFor } from '../routes'
 import { Kicker } from './sign'
 
+/** Who built the site, for the footer credit. Not a fact about the shop. */
+const builder = {
+  name: 'Jandir Gregorio',
+  url: 'https://github.com/JandirGregorio',
+}
+
 export function Layout() {
   const { t } = useTranslation()
   useScrollToTop()
@@ -120,7 +126,19 @@ function Footer() {
             <p className="mt-1 hidden sm:block">{t('footer.photoCredit')}</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-            <span>{t('footer.builtBy')}</span>
+            {/* Underlined, not just recolored: it sits inside a sentence, and a
+                link told apart by color alone fails anyone who can't see it. */}
+            <span>
+              {t('footer.builtBy')}{' '}
+              <a
+                href={builder.url}
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-line-dark underline-offset-4 transition-colors duration-200 hover:text-canvas hover:decoration-canvas"
+              >
+                {builder.name}
+              </a>
+            </span>
             <Link
               to={pathFor('legal', language)}
               className="no-underline hover:text-canvas"

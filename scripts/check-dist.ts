@@ -63,6 +63,8 @@ const allowedExternalHosts = [
   // Review, directions and map links the visitor chooses to follow.
   'https://www.google.com',
   'https://g.page',
+  // The footer credit to the site's builder. A link, never loaded on its own.
+  'https://github.com/JandirGregorio',
   // Vocabulary URLs inside JSON-LD. Nothing fetches these.
   'https://schema.org',
   'http://schema.org',
