@@ -109,15 +109,18 @@ function Footer() {
         </div>
       </div>
 
-      {/* The small print, under a hairline: ownership of the site and its
-          photographs, and the way to the notices that explain both. */}
+      {/* The small print, under a hairline. What the shop owns sits on the
+          left; who built the site and the way to its notices sit on the right. */}
       <div className="border-t border-line-dark">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-3 px-6 py-6 text-sm text-fog sm:flex-row sm:justify-between">
-          <p className="text-center tabular-nums sm:text-left">
-            {t('footer.copyright', { year: business.copyrightYear })}
-          </p>
-          <div className="flex items-center gap-6">
-            <span className="hidden sm:inline">{t('footer.photoCredit')}</span>
+          <div className="text-center sm:text-left">
+            <p className="tabular-nums">
+              {t('footer.copyright', { year: business.copyrightYear })}
+            </p>
+            <p className="mt-1 hidden sm:block">{t('footer.photoCredit')}</p>
+          </div>
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+            <span>{t('footer.builtBy')}</span>
             <Link
               to={pathFor('legal', language)}
               className="no-underline hover:text-canvas"

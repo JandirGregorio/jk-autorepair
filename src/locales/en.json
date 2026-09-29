@@ -225,6 +225,7 @@
   "footer": {
     "tagline": "Auto repair in Hamilton Township, NJ",
     "copyright": "© {{year}} JK Auto Repair. All rights reserved.",
-    "photoCredit": "Photographs taken at the shop."
+    "photoCredit": "Photographs taken at the shop.",
+    "builtBy": "Built by Jandir Gregorio"
   }
 }
