@@ -24,11 +24,13 @@ npm run dev
 
 ## Deploying
 
-Hosted on Cloudflare Pages at <https://jk-autorepair.pages.dev/>. Cloudflare builds the `development` branch on every push; the build settings live in the Cloudflare dashboard, not in this repo.
+Hosted on Cloudflare Pages at <https://jk-autorepair.pages.dev/>. Cloudflare builds and publishes `main` on every push; the build settings live in the Cloudflare dashboard, not in this repo.
+
+Work happens on `development`. Merging it into `main` is what ships, so anything pushed to `development` alone stays off the live site.
 
 | Setting | Value |
 | --- | --- |
-| Production branch | `development` |
+| Production branch | `main` |
 | Build command | `npm run build && npm run check-dist` |
 | Build output directory | `dist` |
 | `NODE_VERSION` | `22` |
