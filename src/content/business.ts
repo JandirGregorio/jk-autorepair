@@ -52,7 +52,7 @@ export const business = {
    * A policy that does not say when it was written is worth less than no
    * policy. Bump this whenever the text or the shop's actual practice changes.
    */
-  policiesUpdated: '2026-09-23',
+  policiesUpdated: '2026-09-28',
 
   /**
    * The year this site was published, for the footer notice.

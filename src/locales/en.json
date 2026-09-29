@@ -150,7 +150,7 @@
       },
       "hosting": {
         "title": "Hosting",
-        "body": "The site is hosted on GitHub Pages. Like any web host, GitHub records standard server information when a page is requested, including the IP address that asked for it. Those records belong to GitHub. The shop does not see them and cannot get at them."
+        "body": "The site is hosted on Cloudflare Pages. To deliver each page and protect the site from attacks, Cloudflare handles every request, including the IP address it came from, and keeps its own records of them. Those records belong to Cloudflare. The shop does not see them and cannot get at them."
       },
       "map": {
         "title": "The map",

@@ -150,7 +150,7 @@
       },
       "hosting": {
         "title": "Dónde está alojado",
-        "body": "El sitio está alojado en GitHub Pages. Como cualquier servidor, GitHub anota datos básicos cada vez que alguien pide una página, entre ellos la dirección IP desde donde la pidieron. Esos registros son de GitHub. El taller no los ve ni puede llegar a ellos."
+        "body": "El sitio está alojado en Cloudflare Pages. Para entregar cada página y proteger el sitio contra ataques, Cloudflare atiende cada visita, incluida la dirección IP desde donde se hizo, y guarda sus propios registros. Esos registros son de Cloudflare. El taller no los ve ni puede llegar a ellos."
       },
       "map": {
         "title": "El mapa",
